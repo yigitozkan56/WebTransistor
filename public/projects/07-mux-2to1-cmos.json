@@ -1,0 +1,973 @@
+{
+  "version": 1,
+  "name": "2-to-1 Çoklayıcı — Statik CMOS MUX (14T)",
+  "components": [
+    {
+      "id": "sw_d0",
+      "type": "TOGGLE_SWITCH",
+      "x": 100,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "D0",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "sw_sel",
+      "type": "TOGGLE_SWITCH",
+      "x": 100,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "SEL",
+        "state": false,
+        "keyBinding": "S"
+      }
+    },
+    {
+      "id": "sw_d1",
+      "type": "TOGGLE_SWITCH",
+      "x": 100,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "D1",
+        "state": false,
+        "keyBinding": "B"
+      }
+    },
+    {
+      "id": "vcc_inv",
+      "type": "VCC",
+      "x": 280,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p_inv",
+      "type": "PMOS",
+      "x": 280,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "P_INV"
+      }
+    },
+    {
+      "id": "n_inv",
+      "type": "NMOS",
+      "x": 280,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N_INV"
+      }
+    },
+    {
+      "id": "gnd_inv",
+      "type": "GND",
+      "x": 280,
+      "y": 400,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "m0_vcc",
+      "type": "VCC",
+      "x": 520,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "m0_pa",
+      "type": "PMOS",
+      "x": 460,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "m0_pb",
+      "type": "PMOS",
+      "x": 580,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "m0_na",
+      "type": "NMOS",
+      "x": 520,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "m0_nb",
+      "type": "NMOS",
+      "x": 520,
+      "y": 300,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "m0_gnd",
+      "type": "GND",
+      "x": 520,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "m1_vcc",
+      "type": "VCC",
+      "x": 520,
+      "y": 460,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "m1_pa",
+      "type": "PMOS",
+      "x": 460,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "m1_pb",
+      "type": "PMOS",
+      "x": 580,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "m1_na",
+      "type": "NMOS",
+      "x": 520,
+      "y": 640,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "m1_nb",
+      "type": "NMOS",
+      "x": 520,
+      "y": 720,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "m1_gnd",
+      "type": "GND",
+      "x": 520,
+      "y": 800,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "my_vcc",
+      "type": "VCC",
+      "x": 820,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "my_pa",
+      "type": "PMOS",
+      "x": 760,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "my_pb",
+      "type": "PMOS",
+      "x": 880,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "my_na",
+      "type": "NMOS",
+      "x": 820,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "my_nb",
+      "type": "NMOS",
+      "x": 820,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "my_gnd",
+      "type": "GND",
+      "x": 820,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_y",
+      "type": "LED",
+      "x": 980,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "Y",
+        "color": "cyan"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_inv_v",
+      "from": {
+        "componentId": "vcc_inv",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_inv_m",
+      "from": {
+        "componentId": "p_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_inv_g",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_inv",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_sel_pi",
+      "from": {
+        "componentId": "sw_sel",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 260
+        },
+        {
+          "x": 200,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_sel_ni",
+      "from": {
+        "componentId": "sw_sel",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 260
+        },
+        {
+          "x": 200,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "m0_w_v1",
+      "from": {
+        "componentId": "m0_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m0_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 80
+        },
+        {
+          "x": 460,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "m0_w_v2",
+      "from": {
+        "componentId": "m0_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m0_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 80
+        },
+        {
+          "x": 580,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "m0_w_o1",
+      "from": {
+        "componentId": "m0_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m0_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 460,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "m0_w_o2",
+      "from": {
+        "componentId": "m0_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m0_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "m0_w_ser",
+      "from": {
+        "componentId": "m0_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "m0_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "m0_w_gnd",
+      "from": {
+        "componentId": "m0_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "m0_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "m1_w_v1",
+      "from": {
+        "componentId": "m1_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 500
+        },
+        {
+          "x": 460,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "m1_w_v2",
+      "from": {
+        "componentId": "m1_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 500
+        },
+        {
+          "x": 580,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "m1_w_o1",
+      "from": {
+        "componentId": "m1_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m1_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 460,
+          "y": 600
+        },
+        {
+          "x": 520,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "m1_w_o2",
+      "from": {
+        "componentId": "m1_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m1_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 600
+        },
+        {
+          "x": 520,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "m1_w_ser",
+      "from": {
+        "componentId": "m1_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "m1_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "m1_w_gnd",
+      "from": {
+        "componentId": "m1_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "m1_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "my_w_v1",
+      "from": {
+        "componentId": "my_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "my_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 280
+        },
+        {
+          "x": 760,
+          "y": 280
+        }
+      ]
+    },
+    {
+      "id": "my_w_v2",
+      "from": {
+        "componentId": "my_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "my_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 280
+        },
+        {
+          "x": 880,
+          "y": 280
+        }
+      ]
+    },
+    {
+      "id": "my_w_o1",
+      "from": {
+        "componentId": "my_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 760,
+          "y": 380
+        },
+        {
+          "x": 820,
+          "y": 380
+        }
+      ]
+    },
+    {
+      "id": "my_w_o2",
+      "from": {
+        "componentId": "my_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 880,
+          "y": 380
+        },
+        {
+          "x": 820,
+          "y": 380
+        }
+      ]
+    },
+    {
+      "id": "my_w_ser",
+      "from": {
+        "componentId": "my_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "my_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "my_w_gnd",
+      "from": {
+        "componentId": "my_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "my_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_d0_p",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m0_pa",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_d0_n",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m0_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 380,
+          "y": 120
+        },
+        {
+          "x": 380,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_nsel_p",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m0_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 360,
+          "y": 160
+        },
+        {
+          "x": 540,
+          "y": 160
+        },
+        {
+          "x": 540,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "w_nsel_n",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "m0_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 360,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w_d1_p",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_pa",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_d1_n",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 380,
+          "y": 540
+        },
+        {
+          "x": 380,
+          "y": 640
+        }
+      ]
+    },
+    {
+      "id": "w_sel_p",
+      "from": {
+        "componentId": "sw_sel",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 260
+        },
+        {
+          "x": 200,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 580
+        },
+        {
+          "x": 540,
+          "y": 580
+        },
+        {
+          "x": 540,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w_sel_n",
+      "from": {
+        "componentId": "sw_sel",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "m1_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 260
+        },
+        {
+          "x": 200,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 720
+        }
+      ]
+    },
+    {
+      "id": "w_m0_p",
+      "from": {
+        "componentId": "m0_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_pa",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_m0_n",
+      "from": {
+        "componentId": "m0_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 420
+        }
+      ]
+    },
+    {
+      "id": "w_m1_p",
+      "from": {
+        "componentId": "m1_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 600
+        },
+        {
+          "x": 680,
+          "y": 600
+        },
+        {
+          "x": 680,
+          "y": 360
+        },
+        {
+          "x": 840,
+          "y": 360
+        },
+        {
+          "x": 840,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_m1_n",
+      "from": {
+        "componentId": "m1_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "my_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 600
+        },
+        {
+          "x": 680,
+          "y": 600
+        },
+        {
+          "x": 680,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "w_y_led",
+      "from": {
+        "componentId": "my_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_y",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 380
+        }
+      ]
+    }
+  ]
+}

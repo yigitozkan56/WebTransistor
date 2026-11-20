@@ -1,0 +1,581 @@
+{
+  "version": 1,
+  "name": "5 Kademeli NMOS Halka Osilatör (5T)",
+  "components": [
+    {
+      "id": "led_s1",
+      "type": "LED",
+      "x": 160,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "S1",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "pu_1",
+      "type": "PULL_UP",
+      "x": 140,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "R1"
+      }
+    },
+    {
+      "id": "n_1",
+      "type": "NMOS",
+      "x": 140,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "T1"
+      }
+    },
+    {
+      "id": "gnd_1",
+      "type": "GND",
+      "x": 140,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "GND"
+      }
+    },
+    {
+      "id": "led_s2",
+      "type": "LED",
+      "x": 300,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "S2",
+        "color": "green"
+      }
+    },
+    {
+      "id": "pu_2",
+      "type": "PULL_UP",
+      "x": 280,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "R2"
+      }
+    },
+    {
+      "id": "n_2",
+      "type": "NMOS",
+      "x": 280,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "T2"
+      }
+    },
+    {
+      "id": "gnd_2",
+      "type": "GND",
+      "x": 280,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "GND"
+      }
+    },
+    {
+      "id": "led_s3",
+      "type": "LED",
+      "x": 440,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "S3",
+        "color": "amber"
+      }
+    },
+    {
+      "id": "pu_3",
+      "type": "PULL_UP",
+      "x": 420,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "R3"
+      }
+    },
+    {
+      "id": "n_3",
+      "type": "NMOS",
+      "x": 420,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "T3"
+      }
+    },
+    {
+      "id": "gnd_3",
+      "type": "GND",
+      "x": 420,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "GND"
+      }
+    },
+    {
+      "id": "led_s4",
+      "type": "LED",
+      "x": 580,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "S4",
+        "color": "red"
+      }
+    },
+    {
+      "id": "pu_4",
+      "type": "PULL_UP",
+      "x": 560,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "R4"
+      }
+    },
+    {
+      "id": "n_4",
+      "type": "NMOS",
+      "x": 560,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "T4"
+      }
+    },
+    {
+      "id": "gnd_4",
+      "type": "GND",
+      "x": 560,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "GND"
+      }
+    },
+    {
+      "id": "led_s5",
+      "type": "LED",
+      "x": 720,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "S5",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "pu_5",
+      "type": "PULL_UP",
+      "x": 700,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "R5"
+      }
+    },
+    {
+      "id": "n_5",
+      "type": "NMOS",
+      "x": 700,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "T5"
+      }
+    },
+    {
+      "id": "gnd_5",
+      "type": "GND",
+      "x": 700,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "GND"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_pu_1",
+      "from": {
+        "componentId": "pu_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_1",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_gnd_1",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_1",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_led_1",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_s1",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 140,
+          "y": 180
+        },
+        {
+          "x": 100,
+          "y": 180
+        },
+        {
+          "x": 100,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "id": "w_pu_2",
+      "from": {
+        "componentId": "pu_2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_2",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_gnd_2",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_led_2",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_s2",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 280,
+          "y": 180
+        },
+        {
+          "x": 240,
+          "y": 180
+        },
+        {
+          "x": 240,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "id": "w_pu_3",
+      "from": {
+        "componentId": "pu_3",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_3",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_gnd_3",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_3",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_led_3",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_s3",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 420,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "id": "w_pu_4",
+      "from": {
+        "componentId": "pu_4",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_4",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_gnd_4",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_4",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_led_4",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_s4",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 560,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "id": "w_pu_5",
+      "from": {
+        "componentId": "pu_5",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_5",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_gnd_5",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_5",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_led_5",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_s5",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 700,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "id": "w_ring_1",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_2",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 140,
+          "y": 180
+        },
+        {
+          "x": 220,
+          "y": 180
+        },
+        {
+          "x": 220,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "id": "w_ring_2",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_3",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 280,
+          "y": 180
+        },
+        {
+          "x": 360,
+          "y": 180
+        },
+        {
+          "x": 360,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "id": "w_ring_3",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_4",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 420,
+          "y": 180
+        },
+        {
+          "x": 500,
+          "y": 180
+        },
+        {
+          "x": 500,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "id": "w_ring_4",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_5",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 560,
+          "y": 180
+        },
+        {
+          "x": 640,
+          "y": 180
+        },
+        {
+          "x": 640,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "id": "w_ring_5",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_1",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 700,
+          "y": 180
+        },
+        {
+          "x": 760,
+          "y": 180
+        },
+        {
+          "x": 760,
+          "y": 380
+        },
+        {
+          "x": 80,
+          "y": 380
+        },
+        {
+          "x": 80,
+          "y": 240
+        }
+      ]
+    }
+  ]
+}

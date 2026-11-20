@@ -1,0 +1,707 @@
+{
+  "version": 1,
+  "name": "1-Bit SR Bellek Hücresi — CMOS NOR Latch (8T)",
+  "components": [
+    {
+      "id": "btn_set",
+      "type": "PUSH_BUTTON",
+      "x": 100,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "SET",
+        "state": false,
+        "keyBinding": "S"
+      }
+    },
+    {
+      "id": "btn_reset",
+      "type": "PUSH_BUTTON",
+      "x": 100,
+      "y": 360,
+      "rotation": 0,
+      "props": {
+        "label": "RESET",
+        "state": false,
+        "keyBinding": "X"
+      }
+    },
+    {
+      "id": "vcc_1",
+      "type": "VCC",
+      "x": 320,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p1_a",
+      "type": "PMOS",
+      "x": 320,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "p1_b",
+      "type": "PMOS",
+      "x": 320,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "n1_a",
+      "type": "NMOS",
+      "x": 260,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "n1_b",
+      "type": "NMOS",
+      "x": 380,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "gnd_1",
+      "type": "GND",
+      "x": 320,
+      "y": 400,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "vcc_2",
+      "type": "VCC",
+      "x": 580,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p2_a",
+      "type": "PMOS",
+      "x": 580,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P3"
+      }
+    },
+    {
+      "id": "p2_b",
+      "type": "PMOS",
+      "x": 580,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "P4"
+      }
+    },
+    {
+      "id": "n2_a",
+      "type": "NMOS",
+      "x": 520,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N3"
+      }
+    },
+    {
+      "id": "n2_b",
+      "type": "NMOS",
+      "x": 640,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N4"
+      }
+    },
+    {
+      "id": "gnd_2",
+      "type": "GND",
+      "x": 580,
+      "y": 400,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "pd_init",
+      "type": "PULL_DOWN",
+      "x": 720,
+      "y": 360,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q",
+      "type": "LED",
+      "x": 780,
+      "y": 180,
+      "rotation": 0,
+      "props": {
+        "label": "Q",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "led_q_bar",
+      "type": "LED",
+      "x": 780,
+      "y": 280,
+      "rotation": 0,
+      "props": {
+        "label": "Q'",
+        "color": "amber"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_n1_vcc",
+      "from": {
+        "componentId": "vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1_a",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_n1_pser",
+      "from": {
+        "componentId": "p1_a",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p1_b",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_n1_out1",
+      "from": {
+        "componentId": "p1_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1_a",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 320,
+          "y": 260
+        },
+        {
+          "x": 260,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_n1_out2",
+      "from": {
+        "componentId": "p1_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1_b",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 320,
+          "y": 260
+        },
+        {
+          "x": 380,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_n1_g1",
+      "from": {
+        "componentId": "n1_a",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_1",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 260,
+          "y": 360
+        },
+        {
+          "x": 320,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_n1_g2",
+      "from": {
+        "componentId": "n1_b",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_1",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 380,
+          "y": 360
+        },
+        {
+          "x": 320,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_n2_vcc",
+      "from": {
+        "componentId": "vcc_2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p2_a",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_n2_pser",
+      "from": {
+        "componentId": "p2_a",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p2_b",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_n2_out1",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n2_a",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 520,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_n2_out2",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n2_b",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 640,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_n2_g1",
+      "from": {
+        "componentId": "n2_a",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_2",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 360
+        },
+        {
+          "x": 580,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_n2_g2",
+      "from": {
+        "componentId": "n2_b",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_2",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 640,
+          "y": 360
+        },
+        {
+          "x": 580,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_set_p",
+      "from": {
+        "componentId": "btn_set",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1_a",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 120
+        },
+        {
+          "x": 180,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w_set_n",
+      "from": {
+        "componentId": "btn_set",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n1_a",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 120
+        },
+        {
+          "x": 180,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_rst_p",
+      "from": {
+        "componentId": "btn_reset",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p2_a",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 360
+        },
+        {
+          "x": 180,
+          "y": 440
+        },
+        {
+          "x": 440,
+          "y": 440
+        },
+        {
+          "x": 440,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w_rst_n",
+      "from": {
+        "componentId": "btn_reset",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n2_a",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 360
+        },
+        {
+          "x": 180,
+          "y": 440
+        },
+        {
+          "x": 440,
+          "y": 440
+        },
+        {
+          "x": 440,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_qb_p",
+      "from": {
+        "componentId": "p1_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p2_b",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 320,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_qb_n",
+      "from": {
+        "componentId": "p1_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n2_b",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 320,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 280
+        },
+        {
+          "x": 600,
+          "y": 280
+        },
+        {
+          "x": 600,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_qb_led",
+      "from": {
+        "componentId": "p1_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q_bar",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 320,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 260
+        },
+        {
+          "x": 480,
+          "y": 480
+        },
+        {
+          "x": 740,
+          "y": 480
+        },
+        {
+          "x": 740,
+          "y": 280
+        }
+      ]
+    },
+    {
+      "id": "w_q_p",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p1_b",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 20
+        },
+        {
+          "x": 240,
+          "y": 20
+        },
+        {
+          "x": 240,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_q_n",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1_b",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 20
+        },
+        {
+          "x": 240,
+          "y": 20
+        },
+        {
+          "x": 240,
+          "y": 280
+        },
+        {
+          "x": 340,
+          "y": 280
+        },
+        {
+          "x": 340,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_q_pd",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "pd_init",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 720,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_q_led",
+      "from": {
+        "componentId": "p2_b",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 260
+        },
+        {
+          "x": 700,
+          "y": 180
+        }
+      ]
+    }
+  ]
+}

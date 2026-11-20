@@ -1,0 +1,457 @@
+{
+  "version": 1,
+  "name": "CMOS NOR & OR Kapısı (6T)",
+  "components": [
+    {
+      "id": "sw_a",
+      "type": "TOGGLE_SWITCH",
+      "x": 120,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "A",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "sw_b",
+      "type": "TOGGLE_SWITCH",
+      "x": 120,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "B",
+        "state": false,
+        "keyBinding": "B"
+      }
+    },
+    {
+      "id": "vcc_nor",
+      "type": "VCC",
+      "x": 360,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p1",
+      "type": "PMOS",
+      "x": 360,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "p2",
+      "type": "PMOS",
+      "x": 360,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "n1",
+      "type": "NMOS",
+      "x": 300,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "n2",
+      "type": "NMOS",
+      "x": 420,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "gnd_nor",
+      "type": "GND",
+      "x": 360,
+      "y": 400,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_nor",
+      "type": "LED",
+      "x": 500,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "NOR",
+        "color": "amber"
+      }
+    },
+    {
+      "id": "vcc_inv",
+      "type": "VCC",
+      "x": 640,
+      "y": 100,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p_inv",
+      "type": "PMOS",
+      "x": 640,
+      "y": 180,
+      "rotation": 0,
+      "props": {
+        "label": "P3"
+      }
+    },
+    {
+      "id": "n_inv",
+      "type": "NMOS",
+      "x": 640,
+      "y": 300,
+      "rotation": 0,
+      "props": {
+        "label": "N3"
+      }
+    },
+    {
+      "id": "gnd_inv",
+      "type": "GND",
+      "x": 640,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_or",
+      "type": "LED",
+      "x": 760,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "OR",
+        "color": "green"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_vcc_p1",
+      "from": {
+        "componentId": "vcc_nor",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_p1_p2",
+      "from": {
+        "componentId": "p1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p2",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_p2_n1",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 300,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_p2_n2",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n2",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 420,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_n1_gnd",
+      "from": {
+        "componentId": "n1",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_nor",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 300,
+          "y": 360
+        },
+        {
+          "x": 360,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_n2_gnd",
+      "from": {
+        "componentId": "n2",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_nor",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 420,
+          "y": 360
+        },
+        {
+          "x": 360,
+          "y": 360
+        }
+      ]
+    },
+    {
+      "id": "w_a_p1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_a_n1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 220,
+          "y": 120
+        },
+        {
+          "x": 220,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_b_p2",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p2",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_b_n2",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n2",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 220
+        },
+        {
+          "x": 200,
+          "y": 280
+        },
+        {
+          "x": 380,
+          "y": 280
+        },
+        {
+          "x": 380,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_nor_led",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_nor",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 460,
+          "y": 260
+        },
+        {
+          "x": 460,
+          "y": 380
+        }
+      ]
+    },
+    {
+      "id": "w_nor_pinv",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 560,
+          "y": 260
+        },
+        {
+          "x": 560,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "w_nor_ninv",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 260
+        },
+        {
+          "x": 560,
+          "y": 260
+        },
+        {
+          "x": 560,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w_vcc_inv",
+      "from": {
+        "componentId": "vcc_inv",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_inv_mid",
+      "from": {
+        "componentId": "p_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_ninv_gnd",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_inv",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_or_led",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_or",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 640,
+          "y": 240
+        }
+      ]
+    }
+  ]
+}

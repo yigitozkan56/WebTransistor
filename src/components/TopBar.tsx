@@ -54,6 +54,7 @@ export interface TopBarProps {
   onOpenHelp: () => void;
   onMacroDuplicateAll?: (copies: number) => void;
   onGenerateBenchmarkChip?: (targetTransistors: number, recommendedHz?: number) => void;
+  onNavigateProjects?: () => void;
 }
 
 const MIN_HZ = 1;
@@ -120,6 +121,7 @@ export function TopBar({
   onOpenHelp,
   onMacroDuplicateAll,
   onGenerateBenchmarkChip,
+  onNavigateProjects,
 }: TopBarProps) {
   const [presetsOpen, setPresetsOpen] = useState(false);
   const [benchmarkOpen, setBenchmarkOpen] = useState(false);
@@ -153,19 +155,20 @@ export function TopBar({
   const sliderValue = hzToSlider(clockHz);
 
   return (
-    <header className="relative z-40 shrink-0">
+    <div className="relative z-40 shrink-0">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E2633] bg-[#0E131A]/95 px-3 py-1.5 backdrop-blur-md">
-        {/* Brand + Transport */}
+        {/* Active Circuit Pill + Transport */}
         <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#00E5FF]/40 bg-[#00E5FF]/10 text-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.2)]">
-              <Cpu className="h-4 w-4" />
-            </div>
-            <div className="leading-none">
-              <span className="text-sm font-bold tracking-tight text-slate-100">
-                Pure<span className="text-[#00E5FF]">Silicon</span>
+          <div
+            className="flex max-w-[210px] items-center gap-2 rounded-xl border border-[#1E2633] bg-[#090C10]/90 px-2.5 py-1"
+            title={`Aktif Devre: ${circuitName}`}
+          >
+            <Cpu className="h-3.5 w-3.5 shrink-0 text-[#00E5FF]" />
+            <div className="min-w-0 leading-none">
+              <span className="block text-[9px] font-semibold tracking-wider text-slate-500 uppercase">
+                Aktif Devre
               </span>
-              <span className="hidden max-w-[160px] truncate text-[10px] text-slate-400 xl:block">
+              <span className="mt-0.5 block truncate text-xs font-semibold text-slate-200">
                 {circuitName}
               </span>
             </div>
@@ -405,19 +408,6 @@ export function TopBar({
             </button>
           </div>
 
-          {/* Uygulama Olarak İndir */}
-          <a
-            href="https://github.com/yigitozkan56/WebTransistor/releases/download/v1.0.0/WebTransistor_1.0.0_x64-setup.exe"
-            download="WebTransistor_1.0.0_x64-setup.exe"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Masaüstü Uygulamasını İndir (.exe)"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1.5 text-xs font-semibold text-emerald-300 transition-all hover:border-emerald-400 hover:bg-emerald-500/20"
-          >
-            <Download className="h-3.5 w-3.5" />
-            <span>Uygulama Olarak İndir</span>
-          </a>
-
           {/* Help */}
           <button
             type="button"
@@ -482,7 +472,7 @@ export function TopBar({
             </button>
 
             {presetsOpen && (
-              <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-[#1E2633] bg-[#0E131A]/95 p-2 shadow-2xl backdrop-blur-md">
+              <div className="absolute right-0 mt-2 max-h-[calc(100vh-7rem)] w-80 overflow-y-auto rounded-2xl border border-[#1E2633] bg-[#0E131A]/95 p-2 shadow-2xl backdrop-blur-md">
                 <div className="px-2 py-1 text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
                   Saf Transistör Başlangıç Sahneleri
                 </div>
@@ -549,11 +539,26 @@ export function TopBar({
                     </div>
                   </div>
                 )}
+
+                {onNavigateProjects && (
+                  <div className="mt-2 border-t border-[#1E2633] pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPresetsOpen(false);
+                        onNavigateProjects();
+                      }}
+                      className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-[#00E5FF]/35 bg-[#00E5FF]/10 px-3 py-2 text-xs font-semibold text-[#00E5FF] transition-all hover:border-[#00E5FF]/60 hover:bg-[#00E5FF]/20"
+                    >
+                      <span>10 Örnek JSON Projesini Aç →</span>
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }

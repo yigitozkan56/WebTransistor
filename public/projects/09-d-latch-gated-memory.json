@@ -1,0 +1,1328 @@
+{
+  "version": 1,
+  "name": "Saat/Enable Kontrollü D-Latch Bellek (18T)",
+  "components": [
+    {
+      "id": "sw_d",
+      "type": "TOGGLE_SWITCH",
+      "x": 100,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "DATA",
+        "state": false,
+        "keyBinding": "D"
+      }
+    },
+    {
+      "id": "sw_en",
+      "type": "TOGGLE_SWITCH",
+      "x": 100,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "ENABLE",
+        "state": false,
+        "keyBinding": "E"
+      }
+    },
+    {
+      "id": "vcc_nd",
+      "type": "VCC",
+      "x": 260,
+      "y": 440,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p_nd",
+      "type": "PMOS",
+      "x": 260,
+      "y": 520,
+      "rotation": 0,
+      "props": {
+        "label": "P_ND"
+      }
+    },
+    {
+      "id": "n_nd",
+      "type": "NMOS",
+      "x": 260,
+      "y": 620,
+      "rotation": 0,
+      "props": {
+        "label": "N_ND"
+      }
+    },
+    {
+      "id": "gnd_nd",
+      "type": "GND",
+      "x": 260,
+      "y": 700,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "sbar_vcc",
+      "type": "VCC",
+      "x": 520,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "sbar_pa",
+      "type": "PMOS",
+      "x": 460,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "sbar_pb",
+      "type": "PMOS",
+      "x": 580,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "sbar_na",
+      "type": "NMOS",
+      "x": 520,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "sbar_nb",
+      "type": "NMOS",
+      "x": 520,
+      "y": 300,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "sbar_gnd",
+      "type": "GND",
+      "x": 520,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "rbar_vcc",
+      "type": "VCC",
+      "x": 520,
+      "y": 460,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "rbar_pa",
+      "type": "PMOS",
+      "x": 460,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "rbar_pb",
+      "type": "PMOS",
+      "x": 580,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "rbar_na",
+      "type": "NMOS",
+      "x": 520,
+      "y": 640,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "rbar_nb",
+      "type": "NMOS",
+      "x": 520,
+      "y": 720,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "rbar_gnd",
+      "type": "GND",
+      "x": 520,
+      "y": 800,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "q_vcc",
+      "type": "VCC",
+      "x": 820,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "q_pa",
+      "type": "PMOS",
+      "x": 760,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "q_pb",
+      "type": "PMOS",
+      "x": 880,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "q_na",
+      "type": "NMOS",
+      "x": 820,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "q_nb",
+      "type": "NMOS",
+      "x": 820,
+      "y": 300,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "q_gnd",
+      "type": "GND",
+      "x": 820,
+      "y": 380,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "qbar_vcc",
+      "type": "VCC",
+      "x": 820,
+      "y": 460,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "qbar_pa",
+      "type": "PMOS",
+      "x": 760,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "qbar_pb",
+      "type": "PMOS",
+      "x": 880,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "qbar_na",
+      "type": "NMOS",
+      "x": 820,
+      "y": 640,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "qbar_nb",
+      "type": "NMOS",
+      "x": 820,
+      "y": 720,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "qbar_gnd",
+      "type": "GND",
+      "x": 820,
+      "y": 800,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "pd_init",
+      "type": "PULL_DOWN",
+      "x": 960,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q",
+      "type": "LED",
+      "x": 1040,
+      "y": 180,
+      "rotation": 0,
+      "props": {
+        "label": "Q",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "led_q_bar",
+      "type": "LED",
+      "x": 1040,
+      "y": 600,
+      "rotation": 0,
+      "props": {
+        "label": "Q'",
+        "color": "amber"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_nd_v",
+      "from": {
+        "componentId": "vcc_nd",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_nd",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_nd_m",
+      "from": {
+        "componentId": "p_nd",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_nd",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_nd_g",
+      "from": {
+        "componentId": "n_nd",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_nd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_d_pnd",
+      "from": {
+        "componentId": "sw_d",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_nd",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 120
+        },
+        {
+          "x": 180,
+          "y": 520
+        }
+      ]
+    },
+    {
+      "id": "w_d_nnd",
+      "from": {
+        "componentId": "sw_d",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n_nd",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 180,
+          "y": 120
+        },
+        {
+          "x": 180,
+          "y": 620
+        }
+      ]
+    },
+    {
+      "id": "sbar_w_v1",
+      "from": {
+        "componentId": "sbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 80
+        },
+        {
+          "x": 460,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "sbar_w_v2",
+      "from": {
+        "componentId": "sbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 80
+        },
+        {
+          "x": 580,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "sbar_w_o1",
+      "from": {
+        "componentId": "sbar_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "sbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 460,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "sbar_w_o2",
+      "from": {
+        "componentId": "sbar_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "sbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 180
+        },
+        {
+          "x": 520,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "sbar_w_ser",
+      "from": {
+        "componentId": "sbar_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "sbar_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "sbar_w_gnd",
+      "from": {
+        "componentId": "sbar_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "sbar_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "rbar_w_v1",
+      "from": {
+        "componentId": "rbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "rbar_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 500
+        },
+        {
+          "x": 460,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "rbar_w_v2",
+      "from": {
+        "componentId": "rbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "rbar_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 500
+        },
+        {
+          "x": 580,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "rbar_w_o1",
+      "from": {
+        "componentId": "rbar_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "rbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 460,
+          "y": 600
+        },
+        {
+          "x": 520,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "rbar_w_o2",
+      "from": {
+        "componentId": "rbar_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "rbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 580,
+          "y": 600
+        },
+        {
+          "x": 520,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "rbar_w_ser",
+      "from": {
+        "componentId": "rbar_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "rbar_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "rbar_w_gnd",
+      "from": {
+        "componentId": "rbar_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "rbar_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "q_w_v1",
+      "from": {
+        "componentId": "q_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "q_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 80
+        },
+        {
+          "x": 760,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "q_w_v2",
+      "from": {
+        "componentId": "q_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "q_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 80
+        },
+        {
+          "x": 880,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "q_w_o1",
+      "from": {
+        "componentId": "q_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 760,
+          "y": 180
+        },
+        {
+          "x": 820,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "q_w_o2",
+      "from": {
+        "componentId": "q_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 880,
+          "y": 180
+        },
+        {
+          "x": 820,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "q_w_ser",
+      "from": {
+        "componentId": "q_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "q_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "q_w_gnd",
+      "from": {
+        "componentId": "q_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "q_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "qbar_w_v1",
+      "from": {
+        "componentId": "qbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "qbar_pa",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 500
+        },
+        {
+          "x": 760,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "qbar_w_v2",
+      "from": {
+        "componentId": "qbar_vcc",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "qbar_pb",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 500
+        },
+        {
+          "x": 880,
+          "y": 500
+        }
+      ]
+    },
+    {
+      "id": "qbar_w_o1",
+      "from": {
+        "componentId": "qbar_pa",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 760,
+          "y": 600
+        },
+        {
+          "x": 820,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "qbar_w_o2",
+      "from": {
+        "componentId": "qbar_pb",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_na",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 880,
+          "y": 600
+        },
+        {
+          "x": 820,
+          "y": 600
+        }
+      ]
+    },
+    {
+      "id": "qbar_w_ser",
+      "from": {
+        "componentId": "qbar_na",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "qbar_nb",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "qbar_w_gnd",
+      "from": {
+        "componentId": "qbar_nb",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "qbar_gnd",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_d_sp",
+      "from": {
+        "componentId": "sw_d",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_pa",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_d_sn",
+      "from": {
+        "componentId": "sw_d",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 380,
+          "y": 120
+        },
+        {
+          "x": 380,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_nd_rp",
+      "from": {
+        "componentId": "n_nd",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "rbar_pa",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 340,
+          "y": 560
+        },
+        {
+          "x": 340,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w_nd_rn",
+      "from": {
+        "componentId": "n_nd",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "rbar_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 340,
+          "y": 560
+        },
+        {
+          "x": 340,
+          "y": 640
+        }
+      ]
+    },
+    {
+      "id": "w_en_sp",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 340
+        },
+        {
+          "x": 200,
+          "y": 160
+        },
+        {
+          "x": 540,
+          "y": 160
+        },
+        {
+          "x": 540,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "w_en_sn",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "sbar_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 340
+        },
+        {
+          "x": 200,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w_en_rp",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "rbar_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 340
+        },
+        {
+          "x": 200,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 580
+        },
+        {
+          "x": 540,
+          "y": 580
+        },
+        {
+          "x": 540,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w_en_rn",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "rbar_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 340
+        },
+        {
+          "x": 200,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 420
+        },
+        {
+          "x": 400,
+          "y": 720
+        }
+      ]
+    },
+    {
+      "id": "w_sb_qp",
+      "from": {
+        "componentId": "sbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_pa",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "w_sb_qn",
+      "from": {
+        "componentId": "sbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 180
+        },
+        {
+          "x": 660,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "id": "w_rb_qbp",
+      "from": {
+        "componentId": "rbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_pa",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 600
+        },
+        {
+          "x": 660,
+          "y": 600
+        },
+        {
+          "x": 660,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w_rb_qbn",
+      "from": {
+        "componentId": "rbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_na",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 600
+        },
+        {
+          "x": 660,
+          "y": 600
+        },
+        {
+          "x": 660,
+          "y": 640
+        }
+      ]
+    },
+    {
+      "id": "w_q_qbp",
+      "from": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 180
+        },
+        {
+          "x": 940,
+          "y": 180
+        },
+        {
+          "x": 940,
+          "y": 420
+        },
+        {
+          "x": 840,
+          "y": 420
+        },
+        {
+          "x": 840,
+          "y": 540
+        }
+      ]
+    },
+    {
+      "id": "w_q_qbn",
+      "from": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "qbar_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 180
+        },
+        {
+          "x": 940,
+          "y": 180
+        },
+        {
+          "x": 940,
+          "y": 420
+        },
+        {
+          "x": 700,
+          "y": 420
+        },
+        {
+          "x": 700,
+          "y": 720
+        }
+      ]
+    },
+    {
+      "id": "w_q_pd",
+      "from": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "pd_init",
+        "pinId": "OUT"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 180
+        },
+        {
+          "x": 960,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "w_q_led",
+      "from": {
+        "componentId": "q_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "id": "w_qb_qp",
+      "from": {
+        "componentId": "qbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_pb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 600
+        },
+        {
+          "x": 920,
+          "y": 600
+        },
+        {
+          "x": 920,
+          "y": 340
+        },
+        {
+          "x": 720,
+          "y": 340
+        },
+        {
+          "x": 720,
+          "y": 160
+        },
+        {
+          "x": 840,
+          "y": 160
+        },
+        {
+          "x": 840,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "w_qb_qn",
+      "from": {
+        "componentId": "qbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "q_nb",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 600
+        },
+        {
+          "x": 920,
+          "y": 600
+        },
+        {
+          "x": 920,
+          "y": 340
+        },
+        {
+          "x": 720,
+          "y": 340
+        },
+        {
+          "x": 720,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w_qb_led",
+      "from": {
+        "componentId": "qbar_na",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q_bar",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 820,
+          "y": 600
+        }
+      ]
+    }
+  ]
+}

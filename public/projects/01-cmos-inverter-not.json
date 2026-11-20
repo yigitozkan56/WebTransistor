@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "name": "CMOS NOT Kapısı (2T)",
+  "components": [
+    {
+      "id": "sw_a",
+      "type": "TOGGLE_SWITCH",
+      "x": 140,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "A",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "led_in",
+      "type": "LED",
+      "x": 260,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "IN",
+        "color": "amber"
+      }
+    },
+    {
+      "id": "vcc_1",
+      "type": "VCC",
+      "x": 340,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p1",
+      "type": "PMOS",
+      "x": 340,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "n1",
+      "type": "NMOS",
+      "x": 340,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "gnd_1",
+      "type": "GND",
+      "x": 340,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_out",
+      "type": "LED",
+      "x": 460,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "OUT",
+        "color": "cyan"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_vcc_p1",
+      "from": {
+        "componentId": "vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_p1_n1",
+      "from": {
+        "componentId": "p1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_n1_gnd",
+      "from": {
+        "componentId": "n1",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_1",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_a_p1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 220,
+          "y": 200
+        },
+        {
+          "x": 220,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w_a_n1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 220,
+          "y": 200
+        },
+        {
+          "x": 220,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_a_led",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "led_in",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 220,
+          "y": 200
+        },
+        {
+          "x": 220,
+          "y": 320
+        }
+      ]
+    },
+    {
+      "id": "w_out_led",
+      "from": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_out",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 340,
+          "y": 200
+        }
+      ]
+    }
+  ]
+}

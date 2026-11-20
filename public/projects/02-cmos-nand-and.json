@@ -1,0 +1,457 @@
+{
+  "version": 1,
+  "name": "CMOS NAND & AND Kapısı (6T)",
+  "components": [
+    {
+      "id": "sw_a",
+      "type": "TOGGLE_SWITCH",
+      "x": 120,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "A",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "sw_b",
+      "type": "TOGGLE_SWITCH",
+      "x": 120,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "B",
+        "state": false,
+        "keyBinding": "B"
+      }
+    },
+    {
+      "id": "vcc_nand",
+      "type": "VCC",
+      "x": 360,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p1",
+      "type": "PMOS",
+      "x": 300,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "p2",
+      "type": "PMOS",
+      "x": 420,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "n1",
+      "type": "NMOS",
+      "x": 360,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "n2",
+      "type": "NMOS",
+      "x": 360,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "gnd_nand",
+      "type": "GND",
+      "x": 360,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_nand",
+      "type": "LED",
+      "x": 500,
+      "y": 300,
+      "rotation": 0,
+      "props": {
+        "label": "NAND",
+        "color": "amber"
+      }
+    },
+    {
+      "id": "vcc_inv",
+      "type": "VCC",
+      "x": 640,
+      "y": 60,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "p_inv",
+      "type": "PMOS",
+      "x": 640,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P3"
+      }
+    },
+    {
+      "id": "n_inv",
+      "type": "NMOS",
+      "x": 640,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "N3"
+      }
+    },
+    {
+      "id": "gnd_inv",
+      "type": "GND",
+      "x": 640,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "led_and",
+      "type": "LED",
+      "x": 760,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "AND",
+        "color": "cyan"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_vcc_p1",
+      "from": {
+        "componentId": "vcc_nand",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 100
+        },
+        {
+          "x": 300,
+          "y": 100
+        }
+      ]
+    },
+    {
+      "id": "w_vcc_p2",
+      "from": {
+        "componentId": "vcc_nand",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p2",
+        "pinId": "S"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 100
+        },
+        {
+          "x": 420,
+          "y": 100
+        }
+      ]
+    },
+    {
+      "id": "w_p1_n1",
+      "from": {
+        "componentId": "p1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 300,
+          "y": 200
+        },
+        {
+          "x": 360,
+          "y": 200
+        }
+      ]
+    },
+    {
+      "id": "w_p2_n1",
+      "from": {
+        "componentId": "p2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "waypoints": [
+        {
+          "x": 420,
+          "y": 200
+        },
+        {
+          "x": 360,
+          "y": 200
+        }
+      ]
+    },
+    {
+      "id": "w_n1_n2",
+      "from": {
+        "componentId": "n1",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "n2",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_n2_gnd",
+      "from": {
+        "componentId": "n2",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_nand",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_a_p1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p1",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_a_n1",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n1",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 200,
+          "y": 140
+        },
+        {
+          "x": 200,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "id": "w_b_n2",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "n2",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_b_p2",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p2",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 220,
+          "y": 340
+        },
+        {
+          "x": 220,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 180
+        },
+        {
+          "x": 380,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w_nand_led",
+      "from": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_nand",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 200
+        },
+        {
+          "x": 460,
+          "y": 200
+        },
+        {
+          "x": 460,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w_nand_pinv",
+      "from": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 200
+        },
+        {
+          "x": 560,
+          "y": 200
+        },
+        {
+          "x": 560,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "id": "w_nand_ninv",
+      "from": {
+        "componentId": "n1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "G"
+      },
+      "waypoints": [
+        {
+          "x": 360,
+          "y": 200
+        },
+        {
+          "x": 560,
+          "y": 200
+        },
+        {
+          "x": 560,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w_vcc_inv",
+      "from": {
+        "componentId": "vcc_inv",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_inv",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_inv_mid",
+      "from": {
+        "componentId": "p_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_ninv_gnd",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_inv",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_and_led",
+      "from": {
+        "componentId": "n_inv",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_and",
+        "pinId": "IN"
+      },
+      "waypoints": [
+        {
+          "x": 640,
+          "y": 200
+        }
+      ]
+    }
+  ]
+}
