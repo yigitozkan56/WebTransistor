@@ -11,5 +11,5 @@ pub fn run() {
             gpu_step_batch
         ])
         .run(tauri::generate_context!())
-        .expect("error while running PureSilicon Tauri application");
+        .expect("error while running WebTransistor Tauri application");
 }

@@ -285,7 +285,7 @@ export function createDefaultDocument(): CircuitDocument {
 
   return {
     version: 1,
-    name: 'PureSilicon Başlangıç Devresi',
+    name: 'WebTransistor Başlangıç Devresi',
     components,
     wires,
   };
@@ -295,7 +295,7 @@ function createPureSiliconPreset(): CircuitPreset {
   const doc = createDefaultDocument();
   return {
     id: 'puresilicon-startup',
-    name: 'PureSilicon Başlangıç',
+    name: 'WebTransistor Başlangıç',
     subtitle: '3T Ring Osilatör & 4T CMOS NAND',
     description:
       'Solda kendi kendine salınım yapan 3 transistörlü (NMOS + Pull-Up) Ring Osilatör saat devresi ve yanıp sönen LED; sağda ise 2 PMOS ve 2 NMOS transistörden oluşan saf CMOS NAND kapısı.',

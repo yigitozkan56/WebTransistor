@@ -2867,20 +2867,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d595e54a326bc53c1c197b32d295e14b169e3cfeaa8dc82b529f947fba6bcf5"
 
 [[package]]
-name = "puresilicon"
-version = "1.0.0"
-dependencies = [
- "bytemuck",
- "pollster",
- "rayon",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "wgpu",
-]
-
-[[package]]
 name = "quick-xml"
 version = "0.42.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4554,6 +4540,20 @@ dependencies = [
  "pkg-config",
  "soup3-sys",
  "system-deps",
+]
+
+[[package]]
+name = "webtransistor"
+version = "1.0.0"
+dependencies = [
+ "bytemuck",
+ "pollster",
+ "rayon",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "wgpu",
 ]
 
 [[package]]

@@ -1,12 +1,12 @@
 [package]
-name = "puresilicon"
+name = "webtransistor"
 version = "1.0.0"
-description = "PureSilicon — Saf Transistör Tabanlı Çip & Devre Simülatörü (GPU Accelerated)"
-authors = ["PureSilicon Team"]
+description = "WebTransistor — Saf Transistör Tabanlı Çip & Devre Simülatörü (GPU Accelerated)"
+authors = ["WebTransistor Team"]
 edition = "2021"
 
 [lib]
-name = "puresilicon_lib"
+name = "webtransistor_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

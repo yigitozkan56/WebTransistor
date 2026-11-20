@@ -79,7 +79,7 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
             </div>
             <div>
               <h2 id="help-modal-title" className="text-sm font-semibold text-slate-100">
-                PureSilicon Mimari Kılavuzu &amp; Kısayollar
+                WebTransistor Mimari Kılavuzu &amp; Kısayollar
               </h2>
               <p className="text-xs text-slate-400">
                 Sıfır soyutlama, %100 saf NMOS/PMOS silikon transistör simülatörü
@@ -97,11 +97,11 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
         </div>
 
         <div className="space-y-6 overflow-y-auto px-5 py-5 text-xs text-slate-300">
-          {/* PureSilicon Core Principles */}
+          {/* WebTransistor Core Principles */}
           <section>
             <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#00E5FF]">
               <Cpu className="h-3.5 w-3.5" />
-              <span>PureSilicon Felsefesi</span>
+              <span>WebTransistor Felsefesi</span>
             </div>
             <div className="grid gap-2.5 sm:grid-cols-2">
               {SILICON_PRINCIPLES.map((item) => (

@@ -407,8 +407,8 @@ export function TopBar({
 
           {/* Uygulama Olarak İndir */}
           <a
-            href="https://github.com/yigitozkan56/PureSilicon/releases/download/v1.0.0/PureSilicon_1.0.0_x64-setup.exe"
-            download="PureSilicon_1.0.0_x64-setup.exe"
+            href="https://github.com/yigitozkan56/WebTransistor/releases/download/v1.0.0/WebTransistor_1.0.0_x64-setup.exe"
+            download="WebTransistor_1.0.0_x64-setup.exe"
             target="_blank"
             rel="noopener noreferrer"
             title="Masaüstü Uygulamasını İndir (.exe)"

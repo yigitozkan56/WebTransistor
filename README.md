@@ -1,6 +1,6 @@
-# PureSilicon (WebTransistor)
+# WebTransistor
 
-**PureSilicon**, saf transistör tabanlı çip ve devre simülatörüdür. React, TypeScript, Vite ve Tauri (Rust + wgpu GPU hızlandırma) ile geliştirilmiştir.
+**WebTransistor**, saf transistör tabanlı çip ve devre simülatörüdür. React, TypeScript, Vite ve Tauri (Rust + wgpu GPU hızlandırma) ile geliştirilmiştir.
 
 ## Özellikler
 
@@ -29,6 +29,6 @@ npm run tauri:build
 
 ## İndirme
 
-Windows masaüstü uygulamasını (.exe) [Releases](https://github.com/yigitozkan56/PureSilicon/releases/tag/v1.0.0) sayfasından veya doğrudan aşağıdaki bağlantıdan indirebilirsiniz:
+Windows masaüstü uygulamasını (.exe) [Releases](https://github.com/yigitozkan56/WebTransistor/releases/tag/v1.0.0) sayfasından veya doğrudan aşağıdaki bağlantıdan indirebilirsiniz:
 
-- [PureSilicon_1.0.0_x64-setup.exe](https://github.com/yigitozkan56/PureSilicon/releases/download/v1.0.0/PureSilicon_1.0.0_x64-setup.exe)
+- [WebTransistor_1.0.0_x64-setup.exe](https://github.com/yigitozkan56/WebTransistor/releases/download/v1.0.0/WebTransistor_1.0.0_x64-setup.exe)

@@ -520,7 +520,7 @@ export default function App() {
         .trim()
         .toLowerCase()
         .replace(/[^a-z0-9-_]+/g, '-')
-        .replace(/^-+|-+$/g, '') || 'puresilicon-circuit';
+        .replace(/^-+|-+$/g, '') || 'webtransistor-circuit';
     a.href = url;
     a.download = `${safeName}.json`;
     window.document.body.appendChild(a);
@@ -839,7 +839,7 @@ export default function App() {
               JSON Devre Dosyasını Bırakın
             </div>
             <div className="text-xs text-slate-400">
-              PureSilicon devre belgesi (.json) otomatik olarak içe aktarılır
+              WebTransistor devre belgesi (.json) otomatik olarak içe aktarılır
             </div>
           </div>
         </div>

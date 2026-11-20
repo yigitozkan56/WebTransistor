@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "PureSilicon",
+  "productName": "WebTransistor",
   "version": "1.0.0",
-  "identifier": "com.puresilicon.simulator",
+  "identifier": "com.webtransistor.simulator",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:5173",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "PureSilicon — Saf Transistör Tabanlı Çip & Devre Simülatörü (GPU Accelerated)",
+        "title": "WebTransistor — Saf Transistör Tabanlı Çip & Devre Simülatörü (GPU Accelerated)",
         "width": 1440,
         "height": 900,
         "minWidth": 1024,
