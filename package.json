@@ -1,0 +1,31 @@
+{
+  "name": "webtransistor",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "dependencies": {
+    "lucide-react": "^1",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4",
+    "@tauri-apps/cli": "^2.12.6",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^5"
+  }
+}
