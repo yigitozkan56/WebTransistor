@@ -1,0 +1,610 @@
+{
+  "version": 1,
+  "name": "1-Bit Eşitlik Karşılaştırıcı — CMOS XNOR (14T)",
+  "components": [
+    {
+      "id": "sw_a",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "A",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "sw_b",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "B",
+        "state": false,
+        "keyBinding": "B"
+      }
+    },
+    {
+      "id": "top_vcc_1",
+      "type": "VCC",
+      "x": 380,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "bot_gnd_2",
+      "type": "GND",
+      "x": 380,
+      "y": 400,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "xor_na_p_3",
+      "type": "PMOS",
+      "x": 220,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "xor_na_n_4",
+      "type": "NMOS",
+      "x": 220,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "xor_nb_p_5",
+      "type": "PMOS",
+      "x": 300,
+      "y": 140,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "xor_nb_n_6",
+      "type": "NMOS",
+      "x": 300,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "xor_pa1_7",
+      "type": "PMOS",
+      "x": 400,
+      "y": 100,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "xor_pb1_8",
+      "type": "PMOS",
+      "x": 400,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "xor_pa2_9",
+      "type": "PMOS",
+      "x": 480,
+      "y": 100,
+      "rotation": 0,
+      "props": {
+        "label": "P3"
+      }
+    },
+    {
+      "id": "xor_pb2_10",
+      "type": "PMOS",
+      "x": 480,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "label": "P4"
+      }
+    },
+    {
+      "id": "xor_na1_11",
+      "type": "NMOS",
+      "x": 400,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "xor_nb1_12",
+      "type": "NMOS",
+      "x": 400,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "xor_na2_13",
+      "type": "NMOS",
+      "x": 480,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "N3"
+      }
+    },
+    {
+      "id": "xor_nb2_14",
+      "type": "NMOS",
+      "x": 480,
+      "y": 320,
+      "rotation": 0,
+      "props": {
+        "label": "N4"
+      }
+    },
+    {
+      "id": "inv_p_15",
+      "type": "PMOS",
+      "x": 560,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "inv_n_16",
+      "type": "NMOS",
+      "x": 560,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "led_eq",
+      "type": "LED",
+      "x": 680,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "label": "EQ (A=B)",
+        "color": "green"
+      }
+    },
+    {
+      "id": "led_neq",
+      "type": "LED",
+      "x": 680,
+      "y": 260,
+      "rotation": 0,
+      "props": {
+        "label": "NEQ (A≠B)",
+        "color": "amber"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_1",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_na_p_3",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_2",
+      "from": {
+        "componentId": "xor_na_p_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_na_n_4",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_3",
+      "from": {
+        "componentId": "xor_na_n_4",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_4",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_na_p_3",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_5",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_na_n_4",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_6",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_nb_p_5",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_7",
+      "from": {
+        "componentId": "xor_nb_p_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_nb_n_6",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_8",
+      "from": {
+        "componentId": "xor_nb_n_6",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_9",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_nb_p_5",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_10",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_nb_n_6",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_11",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_pa1_7",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_12",
+      "from": {
+        "componentId": "xor_pa1_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_pb1_8",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_13",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_pa2_9",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_14",
+      "from": {
+        "componentId": "xor_pa2_9",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_pb2_10",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_15",
+      "from": {
+        "componentId": "xor_pb1_8",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_16",
+      "from": {
+        "componentId": "xor_pb2_10",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_17",
+      "from": {
+        "componentId": "xor_na2_13",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_18",
+      "from": {
+        "componentId": "xor_na1_11",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "xor_nb1_12",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_19",
+      "from": {
+        "componentId": "xor_nb1_12",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_20",
+      "from": {
+        "componentId": "xor_na2_13",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "xor_nb2_14",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_21",
+      "from": {
+        "componentId": "xor_nb2_14",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_22",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_pa1_7",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_23",
+      "from": {
+        "componentId": "xor_nb_n_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_pb1_8",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_24",
+      "from": {
+        "componentId": "xor_na_n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_pa2_9",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_25",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_pb2_10",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_26",
+      "from": {
+        "componentId": "sw_a",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_na1_11",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_27",
+      "from": {
+        "componentId": "sw_b",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "xor_nb1_12",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_28",
+      "from": {
+        "componentId": "xor_na_n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_na2_13",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_29",
+      "from": {
+        "componentId": "xor_nb_n_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "xor_nb2_14",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_30",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "inv_p_15",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_31",
+      "from": {
+        "componentId": "inv_p_15",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "inv_n_16",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_32",
+      "from": {
+        "componentId": "inv_n_16",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_33",
+      "from": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "inv_p_15",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_34",
+      "from": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "inv_n_16",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_35",
+      "from": {
+        "componentId": "inv_n_16",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_eq",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_36",
+      "from": {
+        "componentId": "xor_na1_11",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_neq",
+        "pinId": "IN"
+      }
+    }
+  ]
+}

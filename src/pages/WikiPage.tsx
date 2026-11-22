@@ -25,6 +25,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import { EXAMPLE_PROJECTS } from '../data/exampleProjects';
 import {
   CIRCUIT_DESIGN_GUIDES,
   CMOS_DUALITY_RULES,
@@ -568,7 +569,7 @@ export function WikiPage({
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#1E2633] bg-[#141B24] px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-[#00E5FF]/50 hover:text-[#00E5FF]"
               >
                 <FolderKanban className="h-4 w-4 text-[#00E5FF]" />
-                <span>10 Örnek JSON Projesini İncele</span>
+                <span>{EXAMPLE_PROJECTS.length} Örnek JSON Projesini İncele</span>
               </button>
             </div>
           </div>
@@ -706,7 +707,7 @@ export function WikiPage({
                   className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-[#1E2633] bg-[#141B24] px-3 py-2 text-xs font-medium text-slate-200 transition-colors hover:border-[#00E5FF]/40 hover:text-[#00E5FF]"
                 >
                   <FolderKanban className="h-3.5 w-3.5 text-[#00E5FF]" />
-                  <span>10 Örnek JSON Projesi</span>
+                  <span>{EXAMPLE_PROJECTS.length} Örnek JSON Projesi</span>
                 </button>
               </div>
             </div>
@@ -1364,7 +1365,7 @@ export function WikiPage({
                     className="inline-flex items-center gap-2 rounded-xl border border-[#1E2633] bg-[#090C10] px-4 py-2.5 text-xs font-medium text-slate-200 transition-colors hover:border-[#00E5FF]/50 hover:text-[#00E5FF] sm:text-sm"
                   >
                     <FolderKanban className="h-4 w-4 text-[#00E5FF]" />
-                    <span>10 Örnek JSON Projesini İncele</span>
+                    <span>{EXAMPLE_PROJECTS.length} Örnek JSON Projesini İncele</span>
                   </button>
                 </div>
               </div>

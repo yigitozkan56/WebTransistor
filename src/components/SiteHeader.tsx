@@ -1,5 +1,6 @@
 import type { MouseEvent } from 'react';
 import { BookOpen, Cpu, Download, Layers } from 'lucide-react';
+import { EXAMPLE_PROJECTS } from '../data/exampleProjects';
 import type { AppRoute } from '../router/useRoute';
 
 export interface SiteHeaderProps {
@@ -108,7 +109,7 @@ export function SiteHeader({ activeRoute, onNavigate }: SiteHeaderProps) {
                   : 'bg-[#141B24] text-[#00E5FF]'
               }`}
             >
-              10
+              {EXAMPLE_PROJECTS.length}
             </span>
           </a>
         </nav>

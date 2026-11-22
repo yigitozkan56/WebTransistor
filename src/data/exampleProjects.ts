@@ -6,9 +6,10 @@ export type ProjectCategory =
   | 'Saat & Osilatörler'
   | 'Bellek & Sıralı Devreler'
   | 'Aritmetik & Çoklayıcı'
-  | 'Ekran & Çıkış';
+  | 'Ekran & Çıkış'
+  | 'Mimari & İşlemci';
 
-export type ProjectDifficulty = 'Başlangıç' | 'Orta' | 'İleri';
+export type ProjectDifficulty = 'Başlangıç' | 'Orta' | 'İleri' | 'Uzman';
 
 export interface ExampleProjectMeta {
   id: string;
@@ -35,6 +36,7 @@ export const EXAMPLE_PROJECT_CATEGORIES: readonly ProjectCategory[] = [
   'Bellek & Sıralı Devreler',
   'Aritmetik & Çoklayıcı',
   'Ekran & Çıkış',
+  'Mimari & İşlemci',
 ] as const;
 
 export const EXAMPLE_PROJECTS: readonly ExampleProjectMeta[] = [
@@ -237,6 +239,306 @@ export const EXAMPLE_PROJECTS: readonly ExampleProjectMeta[] = [
       '(A1, A0) ikili koduna göre yalnızca Yk = 1 olur (00→Satır 0, 01→Satır 1, 10→Satır 2, 11→Satır 3). Aktif Yk hattı hem durum LED’i Rk’yi hem de matrisin ilgili satırındaki 4 piksel bacağını aynı anda yakar.',
     controlsHint: '[A] (A0) ve [B] (A1) anahtarlarıyla 00, 01, 10, 11 adreslerini tarayarak 4×4 piksel matrisindeki tüm satırları tek tek aydınlatın.',
     tags: ['Dekoder', '2-to-4', 'Pixel Matrix', '4x4', '28T', 'Ekran'],
+  },
+  {
+    id: '11-cmos-xnor-comparator-1bit',
+    order: 11,
+    filename: '11-cmos-xnor-comparator-1bit.json',
+    jsonPath: '/projects/11-cmos-xnor-comparator-1bit.json',
+    title: '1-Bit Eşitlik Karşılaştırıcı — CMOS XNOR',
+    subtitle: '12T Statik CMOS XOR + 2T İnverter (EQ & NEQ Çıkışı)',
+    category: 'Temel Mantık Kapıları',
+    difficulty: 'Başlangıç',
+    transistorCount: 14,
+    componentCount: 20,
+    wireCount: 36,
+    defaultClockHz: 6,
+    description:
+      'İki tek bitlik girişin (A ve B) birbirine eşit olup olmadığını saf transistör düzeyinde ölçen 14T CMOS XNOR devresi. Eşitlikte yeşil EQ LED’i, farklılıkta amber NEQ LED’i yanar.',
+    howItWorks:
+      '12T tamamlayıcı CMOS XOR çekirdeği girişler farklıyken 1 üretir; çıkışına bağlanan 2T CMOS inverter ise A=B (00 veya 11) durumlarında EQ hattını HIGH seviyesine çeker.',
+    controlsHint: '[A] ve [B] anahtarlarını eşitleyip ayırarak EQ (yeşil) ve NEQ (amber) göstergelerini gözlemleyin.',
+    tags: ['CMOS', 'XNOR', 'Karşılaştırıcı', '14T', 'Eşitlik'],
+  },
+  {
+    id: '12-majority-voter-3input',
+    order: 12,
+    filename: '12-majority-voter-3input.json',
+    jsonPath: '/projects/12-majority-voter-3input.json',
+    title: '3 Girişli Çoğunluk Oylayıcı — TMR Majority Voter',
+    subtitle: 'Havacılık/Uzay Tipi Hata Toleranslı 18T CMOS Oylama Devresi',
+    category: 'Temel Mantık Kapıları',
+    difficulty: 'Başlangıç',
+    transistorCount: 18,
+    componentCount: 24,
+    wireCount: 46,
+    defaultClockHz: 6,
+    description:
+      'Üç yedekli kanaldan (A, B, C) en az ikisi 1 olduğunda çıkışı 1 yapan (Y = AB + BC + AC), üçlü modüler yedekleme (TMR) sistemlerinde kullanılan 18 transistörlü CMOS çoğunluk devresi.',
+    howItWorks:
+      'Üç adet 4T NAND2 kapısı ikili eşleşmeleri (AB, BC, AC) tersler; 6T NAND3 çıkış kapısı De Morgan yasası gereği herhangi bir ikili 1 olduğunda çıkışı HIGH yapar.',
+    controlsHint: '[A], [B] ve [C] anahtarlarından herhangi ikisini (veya üçünü) açarak çoğunluk çıkışını test edin.',
+    tags: ['Majority Voter', 'TMR', 'NAND3', '18T', 'Hata Toleransı'],
+  },
+  {
+    id: '13-full-adder-1bit',
+    order: 13,
+    filename: '13-full-adder-1bit.json',
+    jsonPath: '/projects/13-full-adder-1bit.json',
+    title: '1-Bit Tam Toplayıcı — Full Adder',
+    subtitle: '36 Transistörlü Elde Girişli (CIN) Çekirdek Aritmetik Hücresi',
+    category: 'Aritmetik & Çoklayıcı',
+    difficulty: 'Orta',
+    transistorCount: 36,
+    componentCount: 43,
+    wireCount: 90,
+    defaultClockHz: 6,
+    description:
+      'A, B ve önceki basamaktan gelen elde (CIN) bitini toplayarak SUM ve COUT çıkışlarını üreten, çok bitli işlemci toplayıcılarının temel yapı taşı olan 36T statik CMOS Full Adder.',
+    howItWorks:
+      'İki kademeli 12T CMOS XOR zinciri SUM = A ⊕ B ⊕ CIN üretir; 3 adet 4T CMOS NAND2 kapısı ise COUT = AB + CIN·(A ⊕ B) elde mantığını kısa devresiz hesaplar.',
+    controlsHint: '[A], [B] ve [C] (CIN) anahtarlarıyla 0..3 arası tüm 8 giriş kombinasyonunu test edin.',
+    tags: ['Full Adder', 'ALU', 'Toplama', '36T', 'CMOS'],
+  },
+  {
+    id: '14-demux-1to4-cmos',
+    order: 14,
+    filename: '14-demux-1to4-cmos.json',
+    jsonPath: '/projects/14-demux-1to4-cmos.json',
+    title: '1-to-4 Veri Dağıtıcı — CMOS DEMUX',
+    subtitle: '36 Transistörlü Adres Kontrollü 4 Kanal Sinyal Yönlendirici',
+    category: 'Aritmetik & Çoklayıcı',
+    difficulty: 'Orta',
+    transistorCount: 36,
+    componentCount: 45,
+    wireCount: 94,
+    defaultClockHz: 6,
+    description:
+      'Tek bir veri hattını (DATA), 2-bit adres seçiciye (S1, S0) göre dört ayrı çıkış kanalından (Y0–Y3) yalnızca seçili olana yönlendiren 36 transistörlü saf CMOS demultiplexer.',
+    howItWorks:
+      '2 adet 2T inverter !S0/!S1 sinyallerini üretir; 4 adet 8T CMOS AND3 kapısı yalnızca kendi adres kombinasyonu eşleştiğinde DATA sinyalini ilgili LED çıkışına geçirir.',
+    controlsHint: '[D] ile veri bitini açıp kapatın; [A] (S0) ve [B] (S1) ile aktif hedef kanalı (Y0–Y3) seçin.',
+    tags: ['DEMUX', 'Dağıtıcı', 'AND3', '36T', 'Yönlendirme'],
+  },
+  {
+    id: '15-mux-4to1-cmos',
+    order: 15,
+    filename: '15-mux-4to1-cmos.json',
+    jsonPath: '/projects/15-mux-4to1-cmos.json',
+    title: '4-to-1 Çoklayıcı — CMOS MUX',
+    subtitle: '40 Transistörlü İki Kademeli NAND Çoklama Ağacı',
+    category: 'Aritmetik & Çoklayıcı',
+    difficulty: 'Orta',
+    transistorCount: 40,
+    componentCount: 49,
+    wireCount: 101,
+    defaultClockHz: 6,
+    description:
+      'Dört farklı veri kaynağından (D0–D3) birini 2-bit seçici hatları (S1, S0) ile seçip tek çıkış Y’ye aktaran 40T statik CMOS 4:1 multiplexer.',
+    howItWorks:
+      'İlk kademedeki iki 2:1 MUX (D0/D1 ve D2/D3) ortak S0 hattıyla seçilir; ikinci kademedeki son 2:1 MUX ise S1 hattıyla kazanan kanalı çıkış LED’ine taşır.',
+    controlsHint: '[A/B/C/D] ile D0–D3 kanallarını ayarlayın; [S] (S0) ve [T] (S1) ile çıkışta görmek istediğiniz kanalı seçin.',
+    tags: ['MUX', '4-to-1', 'Çoklayıcı', '40T', 'CMOS'],
+  },
+  {
+    id: '16-ring-oscillator-7stage-cmos',
+    order: 16,
+    filename: '16-ring-oscillator-7stage-cmos.json',
+    jsonPath: '/projects/16-ring-oscillator-7stage-cmos.json',
+    title: '7 Kademeli Saf CMOS Halka Osilatör & Faz Monitörü',
+    subtitle: '14 Transistörlü Sıfır Statik Akımlı CMOS Dalga Üreteci',
+    category: 'Saat & Osilatörler',
+    difficulty: 'Orta',
+    transistorCount: 14,
+    componentCount: 23,
+    wireCount: 42,
+    defaultClockHz: 10,
+    description:
+      'Direnç kullanmadan yalnızca 7 adet tamamlayıcı CMOS inverter (7 PMOS + 7 NMOS) halkasından oluşan, 14 tick periyotlu kendi kendine başlayan (self-kickstart) yüksek kararlılıklı saat osilatörü.',
+    howItWorks:
+      '7 tek sayılı CMOS tersleme aşaması kapalı halka oluşturur; her yayılım adımında sinyal bir sonraki kademeye terslenerek geçer ve P1–P7 faz LED’lerinde canlı dalga oluşturur.',
+    controlsHint: 'Simülasyon çalışırken P1–P7 faz monitörü LED’lerinin 14 tick periyotlu CMOS dalgasını izleyin.',
+    tags: ['CMOS', 'Ring Oscillator', '7-Stage', '14T', 'Saat', 'Faz'],
+  },
+  {
+    id: '17-d-flipflop-edge-triggered',
+    order: 17,
+    filename: '17-d-flipflop-edge-triggered.json',
+    jsonPath: '/projects/17-d-flipflop-edge-triggered.json',
+    title: 'Kenar Tetiklemeli Master-Slave D Flip-Flop',
+    subtitle: '38 Transistörlü Yükselen Saat Kenarı (Rising-Edge) Yazmaç Hücresi',
+    category: 'Bellek & Sıralı Devreler',
+    difficulty: 'İleri',
+    transistorCount: 38,
+    componentCount: 47,
+    wireCount: 100,
+    defaultClockHz: 8,
+    description:
+      'İki adet 18T CMOS D-Latch’in ters fazlı saatle (Master=CLK’, Slave=CLK) kaskad bağlanmasıyla yalnızca saat yükselen kenarında veri yakalayan gerçek 38T Master-Slave D Flip-Flop.',
+    howItWorks:
+      'CLK=0 iken Master (QM) veriyi örnekler ama Slave (Q) kilitlidir. CLK=1 yapıldığında Master kilitlenir ve o andaki QM değeri Slave çıkışına (Q/Q’) aktarılır; sonrasında D değişse bile Q etkilenmez.',
+    controlsHint: '[D] ile veriyi hazırlayın, [C] (CLK) butonuna basıp bırakarak yükselen kenarda Q çıkışının güncellendiğini görün.',
+    tags: ['Flip-Flop', 'Master-Slave', 'Rising Edge', '38T', 'Sıralı Devre'],
+  },
+  {
+    id: '18-2bit-magnitude-comparator',
+    order: 18,
+    filename: '18-2bit-magnitude-comparator.json',
+    jsonPath: '/projects/18-2bit-magnitude-comparator.json',
+    title: '2-Bit Büyüklük Karşılaştırıcı (A>B, A=B, A<B)',
+    subtitle: '62 Transistörlü İkili Sayı Sıralama ve Karşılaştırma Birimi',
+    category: 'Aritmetik & Çoklayıcı',
+    difficulty: 'İleri',
+    transistorCount: 62,
+    componentCount: 71,
+    wireCount: 156,
+    defaultClockHz: 6,
+    description:
+      'İki adet 2-bit işaretsiz sayıyı (A[1:0] ve B[1:0], 0..3) karşılaştırıp A>B (cyan), A=B (yeşil) veya A<B (amber) çıkışlarından tam olarak birini yakan 62T statik CMOS karşılaştırıcı.',
+    howItWorks:
+      'Önce yüksek anlamlı bitler (A1, B1) karşılaştırılır; eşitlerse düşük anlamlı bitler (A0, B0) devreye girer. Tüm 16 giriş kombinasyonunda yalnızca doğru ilişki LED’i aktif olur.',
+    controlsHint: '[A/B] ile A sayısını (A1,A0), [C/D] ile B sayısını (B1,B0) girerek GT/EQ/LT çıkışlarını test edin.',
+    tags: ['Comparator', 'Karşılaştırıcı', '2-Bit', '62T', 'ALU'],
+  },
+  {
+    id: '19-4bit-ripple-carry-adder',
+    order: 19,
+    filename: '19-4bit-ripple-carry-adder.json',
+    jsonPath: '/projects/19-4bit-ripple-carry-adder.json',
+    title: '4-Bit Ripple-Carry Toplayıcı — 4-Bit Adder',
+    subtitle: '144 Transistörlü 4 Kademeli Tam Toplayıcı Zinciri (0..31)',
+    category: 'Aritmetik & Çoklayıcı',
+    difficulty: 'İleri',
+    transistorCount: 144,
+    componentCount: 160,
+    wireCount: 357,
+    defaultClockHz: 8,
+    description:
+      'Dört adet 36T CMOS Full Adder’ın elde zinciriyle (COUT→CIN) bağlanmasıyla 0..15 arası iki 4-bit sayıyı ve CIN elde girişini toplayıp 5-bit sonuç (S0–S3 + COUT) üreten 144T toplayıcı.',
+    howItWorks:
+      'Her bit katı kendi A[i], B[i] ve önceki kattan gelen eldeyi hesaplar. Maksimum 15 + 15 + 1 = 31 (COUT=1, S3..S0=1111) toplamı tamamen saf MOSFET anahtarlamasıyla elde edilir.',
+    controlsHint: '[A,B,C,D] ile A[0..3], [Q,W,E,T] ile B[0..3] ve [S] ile CIN girip 5-bit ikili toplamı okuyun.',
+    tags: ['4-Bit Adder', 'Ripple Carry', 'Full Adder', '144T', 'Aritmetik'],
+  },
+  {
+    id: '20-4bit-parallel-register',
+    order: 20,
+    filename: '20-4bit-parallel-register.json',
+    jsonPath: '/projects/20-4bit-parallel-register.json',
+    title: '4-Bit Paralel Yazmaç — 4-Bit Register',
+    subtitle: '72 Transistörlü Ortak LOAD/ENABLE Kontrollü Nibble Belleği',
+    category: 'Bellek & Sıralı Devreler',
+    difficulty: 'İleri',
+    transistorCount: 72,
+    componentCount: 87,
+    wireCount: 188,
+    defaultClockHz: 8,
+    description:
+      'Dört adet 18T CMOS D-Latch hücresinin tek bir LOAD (EN) yazma izni hattıyla senkronize edildiği, 4-bitlik (1 nibble) veriyi aynı anda yakalayıp saklayan 72T işlemci yazmacı.',
+    howItWorks:
+      'LOAD=1 iken D0–D3 veri anahtarları Q0–Q3 bellek hücrelerine yazılır. LOAD=0 yapıldığında 4 bitin tamamı kilitlenir ve giriş anahtarları değişse de saklanan sayı korunur.',
+    controlsHint: '[A,B,C,D] ile 4-bit veriyi ayarlayın, [E] (LOAD) ile yazmaca kilitleyin ve veri değişse bile korunduğunu görün.',
+    tags: ['Register', 'Yazmaç', '4-Bit', '72T', 'Bellek', 'CPU'],
+  },
+  {
+    id: '21-3to8-line-decoder-cmos',
+    order: 21,
+    filename: '21-3to8-line-decoder-cmos.json',
+    jsonPath: '/projects/21-3to8-line-decoder-cmos.json',
+    title: '3-to-8 Adres Çözücü — 3-to-8 Line Decoder',
+    subtitle: '70 Transistörlü 3-Bit İkili Adresten 8 Tek-Aktif (One-Hot) Çıkışa',
+    category: 'Ekran & Çıkış',
+    difficulty: 'İleri',
+    transistorCount: 70,
+    componentCount: 83,
+    wireCount: 183,
+    defaultClockHz: 6,
+    description:
+      '3-bit ikili adres kodunu (A2, A1, A0) 8 ayrı tek-aktif (one-hot) çıkış hattına (Y0–Y7) çözen; bellek bankası ve çevre birimi adreslemede kullanılan 70T CMOS dekoder.',
+    howItWorks:
+      '3 adet 2T inverter tüm adres bitlerinin tümleyenini oluşturur; 8 adet 8T CMOS AND3 kapısından her biri yalnızca kendi 0..7 arasındaki ikili kodu eşleştiğinde çıkış LED’ini yakar.',
+    controlsHint: '[A] (A0), [B] (A1) ve [C] (A2) anahtarlarıyla 000–111 arası tüm 8 adresi tarayın.',
+    tags: ['Dekoder', '3-to-8', 'One-Hot', '70T', 'Adresleme'],
+  },
+  {
+    id: '22-4bit-alu-processor-core',
+    order: 22,
+    filename: '22-4bit-alu-processor-core.json',
+    jsonPath: '/projects/22-4bit-alu-processor-core.json',
+    title: '4-Bit İşlemci ALU Çekirdeği (ADD / SUB / AND / XOR + Bayraklar)',
+    subtitle: '372 Transistörlü 4 İşlemli CPU Aritmetik-Mantık Birimi & Z/C/N Bayrakları',
+    category: 'Mimari & İşlemci',
+    difficulty: 'Uzman',
+    transistorCount: 372,
+    componentCount: 391,
+    wireCount: 921,
+    defaultClockHz: 12,
+    description:
+      'Gerçek bir 4-bit işlemci çekirdeğinin kalbi: 2-bit işlem kodu (OP1, OP0) ile Toplama (A+B), İkiye Tümleyen Çıkarma (A-B), Bitsel AND ve Bitsel XOR işlemlerini yapan, ayrıca ZERO (Z), CARRY (C) ve SIGN (N) işlemci bayraklarını üreten 372T saf MOSFET ALU.',
+    howItWorks:
+      'OP=00 (A+B) ve OP=01 (A-B) modlarında XOR kontrollü B tersleyici + CIN=1 ile 4 kademeli Full Adder aritmetik sonucu üretir. OP=10 (AND) ve OP=11 (XOR) mantık biriminden gelir; 2 kademeli MUX ağı sonucu R0–R3’e seçer, 8T NOR4 kapısı ZERO bayrağını hesaplar.',
+    controlsHint: 'A=[A,B,C,D], B=[Q,W,E,T] | İşlem Kodu [X,S] (OP1,OP0): 00=ADD, 01=SUB, 10=AND, 11=XOR.',
+    tags: ['Uzman', 'ALU', 'CPU', '4-Bit', '372T', 'Bayraklar', 'Mimari'],
+  },
+  {
+    id: '23-4x4-sram-memory-bank',
+    order: 23,
+    filename: '23-4x4-sram-memory-bank.json',
+    jsonPath: '/projects/23-4x4-sram-memory-bank.json',
+    title: '16-Bit (4×4) Adreslenebilir Statik RAM (SRAM) Bellek Bankası',
+    subtitle: '484 Transistörlü 4 Kelime × 4-Bit Okuma/Yazma Bellek Çipi',
+    category: 'Mimari & İşlemci',
+    difficulty: 'Uzman',
+    transistorCount: 484,
+    componentCount: 517,
+    wireCount: 1234,
+    defaultClockHz: 12,
+    description:
+      'Adres çözücü, yazma izni kapılaması, 16 adet CMOS D-Latch bellek hücresi (4 kelime × 4 bit) ve 4 adet 4:1 okuma çoklayıcısından oluşan tam işlevsel 484 transistörlü Statik RAM çipi.',
+    howItWorks:
+      'ADDR[1:0] dört kelimeden birini (W0–W3) seçer. WRITE (WE)=1 yapıldığında yalnızca seçili kelimenin 4 bellek hücresi DI[0..3] verisini kaydeder; WE=0 iken adresler arasında gezerek saklanan 4 farklı 4-bit sayıyı DO[0..3] çıkışından geri okuyabilirsiniz.',
+    controlsHint: 'Veri=[A,B,C,D], Adres=[S,T] (ADDR0,ADDR1), Yazma=[E] (WE). Her adrese farklı sayı yazıp geri okuyun!',
+    tags: ['Uzman', 'SRAM', 'RAM', '16-Bit', '484T', 'Bellek Bankası', 'Mimari'],
+  },
+  {
+    id: '24-4bit-array-multiplier',
+    order: 24,
+    filename: '24-4bit-array-multiplier.json',
+    jsonPath: '/projects/24-4bit-array-multiplier.json',
+    title: '4×4 Bit Donanımsal Çarpıcı — Hardware Array Multiplier',
+    subtitle: '456 Transistörlü 8-Bit (0..225) Kombinasyonel Çarpma Dizisi',
+    category: 'Mimari & İşlemci',
+    difficulty: 'Uzman',
+    transistorCount: 456,
+    componentCount: 474,
+    wireCount: 1128,
+    defaultClockHz: 12,
+    description:
+      'Saat sinyaline ihtiyaç duymadan 4-bit A (0..15) ve 4-bit B (0..15) sayılarını tek geçişte çarpıp 8-bitlik kesin ikili sonucu P[7:0] (0..225) üzerinde üreten 456T donanımsal Braun çarpıcı dizisi.',
+    howItWorks:
+      '16 adet 6T CMOS AND kapısı A[i]·B[j] kısmi çarpımlarını paralel üretir; ardından 3 katmanlı Half Adder ve Full Adder dizisi tüm sütunları toplayarak P0–P7 çıkışlarına taşır (örn. 15×15=225 → 11100001).',
+    controlsHint: 'A=[A,B,C,D] (0..15) ve B=[Q,W,E,T] (0..15) sayılarını girip P0–P7 LED’lerinden 8-bit çarpımı okuyun.',
+    tags: ['Uzman', 'Multiplier', 'Çarpıcı', '8-Bit', '456T', 'ALU', 'Mimari'],
+  },
+  {
+    id: '25-8x8-gpu-pixel-rasterizer',
+    order: 25,
+    filename: '25-8x8-gpu-pixel-rasterizer.json',
+    jsonPath: '/projects/25-8x8-gpu-pixel-rasterizer.json',
+    title: '8×8 Ham Piksel GPU Rasterizer & Koordinat Çizici',
+    subtitle: '1.292 Transistörlü Çift 3-to-8 Dekoder + 64 Piksel CMOS Tarama Motoru',
+    category: 'Mimari & İşlemci',
+    difficulty: 'Uzman',
+    transistorCount: 1292,
+    componentCount: 1302,
+    wireCount: 3294,
+    defaultClockHz: 20,
+    description:
+      'WebTransistor’ın en büyük referans çipi: X[2:0] ve Y[2:0] 3-bit koordinatlarını iki 3-to-8 dekoderle çözüp 64 ayrı piksel mantık hücresi üzerinden sürücüsüz 8×8 Piksel Matrisinin 64 fiziksel bacağını doğrudan süren 1.292 transistörlü GPU rasterizer!',
+    howItWorks:
+      'CROSSHAIR (M)=0 modunda her piksel hücresi Row[r] AND Col[c] hesaplayarak tek bir (X,Y) imleç pikselini yakar. M=1 modunda ise Row[r] OR Col[c] devreye girerek 8×8 ekranda tam nişangâh (yatay + dikey tarama çizgisi) çizer.',
+    controlsHint: 'X=[A,B,C] (0..7), Y=[Q,W,E] (0..7), Mod=[M] (0: Tek Piksel İmleç, 1: Nişangâh / Crosshair).',
+    tags: ['Uzman', 'GPU', '8x8', 'Pixel Matrix', '1292T', 'Rasterizer', 'Mimari'],
   },
 ] as const;
 

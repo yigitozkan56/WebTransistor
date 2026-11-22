@@ -1,0 +1,2960 @@
+{
+  "version": 1,
+  "name": "4-Bit Paralel Yazmaç — 4-Bit Register (72T)",
+  "components": [
+    {
+      "id": "sw_d0",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "D0",
+        "state": false,
+        "keyBinding": "A"
+      }
+    },
+    {
+      "id": "sw_d1",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "D1",
+        "state": false,
+        "keyBinding": "B"
+      }
+    },
+    {
+      "id": "sw_d2",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "D2",
+        "state": false,
+        "keyBinding": "C"
+      }
+    },
+    {
+      "id": "sw_d3",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "D3",
+        "state": false,
+        "keyBinding": "D"
+      }
+    },
+    {
+      "id": "sw_en",
+      "type": "TOGGLE_SWITCH",
+      "x": 80,
+      "y": 1620,
+      "rotation": 0,
+      "props": {
+        "label": "LOAD (EN)",
+        "state": false,
+        "keyBinding": "E"
+      }
+    },
+    {
+      "id": "top_vcc_1",
+      "type": "VCC",
+      "x": 580,
+      "y": 20,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "bot_gnd_2",
+      "type": "GND",
+      "x": 580,
+      "y": 1700,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "bit0_nd_p_3",
+      "type": "PMOS",
+      "x": 260,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "bit0_nd_n_4",
+      "type": "NMOS",
+      "x": 260,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "bit0_sb_p1_5",
+      "type": "PMOS",
+      "x": 360,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit0_sb_p2_6",
+      "type": "PMOS",
+      "x": 440,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit0_sb_n1_7",
+      "type": "NMOS",
+      "x": 400,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit0_sb_n2_8",
+      "type": "NMOS",
+      "x": 400,
+      "y": 280,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit0_rb_p1_9",
+      "type": "PMOS",
+      "x": 540,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit0_rb_p2_10",
+      "type": "PMOS",
+      "x": 620,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit0_rb_n1_11",
+      "type": "NMOS",
+      "x": 580,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit0_rb_n2_12",
+      "type": "NMOS",
+      "x": 580,
+      "y": 280,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit0_qp1_13",
+      "type": "PMOS",
+      "x": 720,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit0_qp2_14",
+      "type": "PMOS",
+      "x": 800,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit0_qn1_15",
+      "type": "NMOS",
+      "x": 760,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit0_qn2_16",
+      "type": "NMOS",
+      "x": 760,
+      "y": 280,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit0_qbp1_17",
+      "type": "PMOS",
+      "x": 900,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit0_qbp2_18",
+      "type": "PMOS",
+      "x": 980,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit0_qbn1_19",
+      "type": "NMOS",
+      "x": 940,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit0_qbn2_20",
+      "type": "NMOS",
+      "x": 940,
+      "y": 280,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit0_pdq_pd_21",
+      "type": "PULL_DOWN",
+      "x": 760,
+      "y": 360,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q0",
+      "type": "LED",
+      "x": 1100,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "label": "Q0",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "bit1_nd_p_22",
+      "type": "PMOS",
+      "x": 260,
+      "y": 540,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "bit1_nd_n_23",
+      "type": "NMOS",
+      "x": 260,
+      "y": 620,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "bit1_sb_p1_24",
+      "type": "PMOS",
+      "x": 360,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit1_sb_p2_25",
+      "type": "PMOS",
+      "x": 440,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit1_sb_n1_26",
+      "type": "NMOS",
+      "x": 400,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit1_sb_n2_27",
+      "type": "NMOS",
+      "x": 400,
+      "y": 660,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit1_rb_p1_28",
+      "type": "PMOS",
+      "x": 540,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit1_rb_p2_29",
+      "type": "PMOS",
+      "x": 620,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit1_rb_n1_30",
+      "type": "NMOS",
+      "x": 580,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit1_rb_n2_31",
+      "type": "NMOS",
+      "x": 580,
+      "y": 660,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit1_qp1_32",
+      "type": "PMOS",
+      "x": 720,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit1_qp2_33",
+      "type": "PMOS",
+      "x": 800,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit1_qn1_34",
+      "type": "NMOS",
+      "x": 760,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit1_qn2_35",
+      "type": "NMOS",
+      "x": 760,
+      "y": 660,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit1_qbp1_36",
+      "type": "PMOS",
+      "x": 900,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit1_qbp2_37",
+      "type": "PMOS",
+      "x": 980,
+      "y": 500,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit1_qbn1_38",
+      "type": "NMOS",
+      "x": 940,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit1_qbn2_39",
+      "type": "NMOS",
+      "x": 940,
+      "y": 660,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit1_pdq_pd_40",
+      "type": "PULL_DOWN",
+      "x": 760,
+      "y": 740,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q1",
+      "type": "LED",
+      "x": 1100,
+      "y": 580,
+      "rotation": 0,
+      "props": {
+        "label": "Q1",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "bit2_nd_p_41",
+      "type": "PMOS",
+      "x": 260,
+      "y": 920,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "bit2_nd_n_42",
+      "type": "NMOS",
+      "x": 260,
+      "y": 1000,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "bit2_sb_p1_43",
+      "type": "PMOS",
+      "x": 360,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit2_sb_p2_44",
+      "type": "PMOS",
+      "x": 440,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit2_sb_n1_45",
+      "type": "NMOS",
+      "x": 400,
+      "y": 960,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit2_sb_n2_46",
+      "type": "NMOS",
+      "x": 400,
+      "y": 1040,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit2_rb_p1_47",
+      "type": "PMOS",
+      "x": 540,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit2_rb_p2_48",
+      "type": "PMOS",
+      "x": 620,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit2_rb_n1_49",
+      "type": "NMOS",
+      "x": 580,
+      "y": 960,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit2_rb_n2_50",
+      "type": "NMOS",
+      "x": 580,
+      "y": 1040,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit2_qp1_51",
+      "type": "PMOS",
+      "x": 720,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit2_qp2_52",
+      "type": "PMOS",
+      "x": 800,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit2_qn1_53",
+      "type": "NMOS",
+      "x": 760,
+      "y": 960,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit2_qn2_54",
+      "type": "NMOS",
+      "x": 760,
+      "y": 1040,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit2_qbp1_55",
+      "type": "PMOS",
+      "x": 900,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit2_qbp2_56",
+      "type": "PMOS",
+      "x": 980,
+      "y": 880,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit2_qbn1_57",
+      "type": "NMOS",
+      "x": 940,
+      "y": 960,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit2_qbn2_58",
+      "type": "NMOS",
+      "x": 940,
+      "y": 1040,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit2_pdq_pd_59",
+      "type": "PULL_DOWN",
+      "x": 760,
+      "y": 1120,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q2",
+      "type": "LED",
+      "x": 1100,
+      "y": 960,
+      "rotation": 0,
+      "props": {
+        "label": "Q2",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "bit3_nd_p_60",
+      "type": "PMOS",
+      "x": 260,
+      "y": 1300,
+      "rotation": 0,
+      "props": {
+        "label": "P"
+      }
+    },
+    {
+      "id": "bit3_nd_n_61",
+      "type": "NMOS",
+      "x": 260,
+      "y": 1380,
+      "rotation": 0,
+      "props": {
+        "label": "N"
+      }
+    },
+    {
+      "id": "bit3_sb_p1_62",
+      "type": "PMOS",
+      "x": 360,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit3_sb_p2_63",
+      "type": "PMOS",
+      "x": 440,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit3_sb_n1_64",
+      "type": "NMOS",
+      "x": 400,
+      "y": 1340,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit3_sb_n2_65",
+      "type": "NMOS",
+      "x": 400,
+      "y": 1420,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit3_rb_p1_66",
+      "type": "PMOS",
+      "x": 540,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit3_rb_p2_67",
+      "type": "PMOS",
+      "x": 620,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit3_rb_n1_68",
+      "type": "NMOS",
+      "x": 580,
+      "y": 1340,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit3_rb_n2_69",
+      "type": "NMOS",
+      "x": 580,
+      "y": 1420,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit3_qp1_70",
+      "type": "PMOS",
+      "x": 720,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit3_qp2_71",
+      "type": "PMOS",
+      "x": 800,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit3_qn1_72",
+      "type": "NMOS",
+      "x": 760,
+      "y": 1340,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit3_qn2_73",
+      "type": "NMOS",
+      "x": 760,
+      "y": 1420,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit3_qbp1_74",
+      "type": "PMOS",
+      "x": 900,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "bit3_qbp2_75",
+      "type": "PMOS",
+      "x": 980,
+      "y": 1260,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "bit3_qbn1_76",
+      "type": "NMOS",
+      "x": 940,
+      "y": 1340,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "bit3_qbn2_77",
+      "type": "NMOS",
+      "x": 940,
+      "y": 1420,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "bit3_pdq_pd_78",
+      "type": "PULL_DOWN",
+      "x": 760,
+      "y": 1500,
+      "rotation": 0,
+      "props": {
+        "label": "INIT"
+      }
+    },
+    {
+      "id": "led_q3",
+      "type": "LED",
+      "x": 1100,
+      "y": 1340,
+      "rotation": 0,
+      "props": {
+        "label": "Q3",
+        "color": "cyan"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_1",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_nd_p_3",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_2",
+      "from": {
+        "componentId": "bit0_nd_p_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_nd_n_4",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_3",
+      "from": {
+        "componentId": "bit0_nd_n_4",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_4",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_nd_p_3",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_5",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_nd_n_4",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_6",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_p1_5",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_7",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_p2_6",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_8",
+      "from": {
+        "componentId": "bit0_sb_p1_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_9",
+      "from": {
+        "componentId": "bit0_sb_p2_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_10",
+      "from": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit0_sb_n2_8",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_11",
+      "from": {
+        "componentId": "bit0_sb_n2_8",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_12",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_p1_5",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_13",
+      "from": {
+        "componentId": "sw_d0",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_14",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_p2_6",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_15",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_sb_n2_8",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_16",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_rb_p1_9",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_17",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_rb_p2_10",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_18",
+      "from": {
+        "componentId": "bit0_rb_p1_9",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_19",
+      "from": {
+        "componentId": "bit0_rb_p2_10",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_20",
+      "from": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit0_rb_n2_12",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_21",
+      "from": {
+        "componentId": "bit0_rb_n2_12",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_22",
+      "from": {
+        "componentId": "bit0_nd_n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_rb_p1_9",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_23",
+      "from": {
+        "componentId": "bit0_nd_n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_24",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_rb_p2_10",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_25",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_rb_n2_12",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_26",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_qp1_13",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_27",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_qp2_14",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_28",
+      "from": {
+        "componentId": "bit0_qp1_13",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_29",
+      "from": {
+        "componentId": "bit0_qp2_14",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_30",
+      "from": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit0_qn2_16",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_31",
+      "from": {
+        "componentId": "bit0_qn2_16",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_32",
+      "from": {
+        "componentId": "bit0_pdq_pd_21",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_33",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_qbp1_17",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_34",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit0_qbp2_18",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_35",
+      "from": {
+        "componentId": "bit0_qbp1_17",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_36",
+      "from": {
+        "componentId": "bit0_qbp2_18",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_37",
+      "from": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit0_qbn2_20",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_38",
+      "from": {
+        "componentId": "bit0_qbn2_20",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_39",
+      "from": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qp1_13",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_40",
+      "from": {
+        "componentId": "bit0_sb_n1_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_41",
+      "from": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qp2_14",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_42",
+      "from": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qn2_16",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_43",
+      "from": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbp1_17",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_44",
+      "from": {
+        "componentId": "bit0_rb_n1_11",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbn1_19",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_45",
+      "from": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbp2_18",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_46",
+      "from": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit0_qbn2_20",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_47",
+      "from": {
+        "componentId": "bit0_qn1_15",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q0",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_48",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_nd_p_22",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_49",
+      "from": {
+        "componentId": "bit1_nd_p_22",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_nd_n_23",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_50",
+      "from": {
+        "componentId": "bit1_nd_n_23",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_51",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_nd_p_22",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_52",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_nd_n_23",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_53",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_p1_24",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_54",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_p2_25",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_55",
+      "from": {
+        "componentId": "bit1_sb_p1_24",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_56",
+      "from": {
+        "componentId": "bit1_sb_p2_25",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_57",
+      "from": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit1_sb_n2_27",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_58",
+      "from": {
+        "componentId": "bit1_sb_n2_27",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_59",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_p1_24",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_60",
+      "from": {
+        "componentId": "sw_d1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_61",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_p2_25",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_62",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_sb_n2_27",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_63",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_rb_p1_28",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_64",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_rb_p2_29",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_65",
+      "from": {
+        "componentId": "bit1_rb_p1_28",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_66",
+      "from": {
+        "componentId": "bit1_rb_p2_29",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_67",
+      "from": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit1_rb_n2_31",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_68",
+      "from": {
+        "componentId": "bit1_rb_n2_31",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_69",
+      "from": {
+        "componentId": "bit1_nd_n_23",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_rb_p1_28",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_70",
+      "from": {
+        "componentId": "bit1_nd_n_23",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_71",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_rb_p2_29",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_72",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_rb_n2_31",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_73",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_qp1_32",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_74",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_qp2_33",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_75",
+      "from": {
+        "componentId": "bit1_qp1_32",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_76",
+      "from": {
+        "componentId": "bit1_qp2_33",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_77",
+      "from": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit1_qn2_35",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_78",
+      "from": {
+        "componentId": "bit1_qn2_35",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_79",
+      "from": {
+        "componentId": "bit1_pdq_pd_40",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_80",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_qbp1_36",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_81",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit1_qbp2_37",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_82",
+      "from": {
+        "componentId": "bit1_qbp1_36",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_83",
+      "from": {
+        "componentId": "bit1_qbp2_37",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_84",
+      "from": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit1_qbn2_39",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_85",
+      "from": {
+        "componentId": "bit1_qbn2_39",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_86",
+      "from": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qp1_32",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_87",
+      "from": {
+        "componentId": "bit1_sb_n1_26",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_88",
+      "from": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qp2_33",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_89",
+      "from": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qn2_35",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_90",
+      "from": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbp1_36",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_91",
+      "from": {
+        "componentId": "bit1_rb_n1_30",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbn1_38",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_92",
+      "from": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbp2_37",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_93",
+      "from": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit1_qbn2_39",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_94",
+      "from": {
+        "componentId": "bit1_qn1_34",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q1",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_95",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_nd_p_41",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_96",
+      "from": {
+        "componentId": "bit2_nd_p_41",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_nd_n_42",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_97",
+      "from": {
+        "componentId": "bit2_nd_n_42",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_98",
+      "from": {
+        "componentId": "sw_d2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_nd_p_41",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_99",
+      "from": {
+        "componentId": "sw_d2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_nd_n_42",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_100",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_p1_43",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_101",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_p2_44",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_102",
+      "from": {
+        "componentId": "bit2_sb_p1_43",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_103",
+      "from": {
+        "componentId": "bit2_sb_p2_44",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_104",
+      "from": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit2_sb_n2_46",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_105",
+      "from": {
+        "componentId": "bit2_sb_n2_46",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_106",
+      "from": {
+        "componentId": "sw_d2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_p1_43",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_107",
+      "from": {
+        "componentId": "sw_d2",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_108",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_p2_44",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_109",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_sb_n2_46",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_110",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_rb_p1_47",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_111",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_rb_p2_48",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_112",
+      "from": {
+        "componentId": "bit2_rb_p1_47",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_113",
+      "from": {
+        "componentId": "bit2_rb_p2_48",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_114",
+      "from": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit2_rb_n2_50",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_115",
+      "from": {
+        "componentId": "bit2_rb_n2_50",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_116",
+      "from": {
+        "componentId": "bit2_nd_n_42",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_rb_p1_47",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_117",
+      "from": {
+        "componentId": "bit2_nd_n_42",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_118",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_rb_p2_48",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_119",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_rb_n2_50",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_120",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_qp1_51",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_121",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_qp2_52",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_122",
+      "from": {
+        "componentId": "bit2_qp1_51",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_123",
+      "from": {
+        "componentId": "bit2_qp2_52",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_124",
+      "from": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit2_qn2_54",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_125",
+      "from": {
+        "componentId": "bit2_qn2_54",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_126",
+      "from": {
+        "componentId": "bit2_pdq_pd_59",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_127",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_qbp1_55",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_128",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit2_qbp2_56",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_129",
+      "from": {
+        "componentId": "bit2_qbp1_55",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_130",
+      "from": {
+        "componentId": "bit2_qbp2_56",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_131",
+      "from": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit2_qbn2_58",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_132",
+      "from": {
+        "componentId": "bit2_qbn2_58",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_133",
+      "from": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qp1_51",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_134",
+      "from": {
+        "componentId": "bit2_sb_n1_45",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_135",
+      "from": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qp2_52",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_136",
+      "from": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qn2_54",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_137",
+      "from": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbp1_55",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_138",
+      "from": {
+        "componentId": "bit2_rb_n1_49",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbn1_57",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_139",
+      "from": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbp2_56",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_140",
+      "from": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit2_qbn2_58",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_141",
+      "from": {
+        "componentId": "bit2_qn1_53",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q2",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_142",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_nd_p_60",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_143",
+      "from": {
+        "componentId": "bit3_nd_p_60",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_nd_n_61",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_144",
+      "from": {
+        "componentId": "bit3_nd_n_61",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_145",
+      "from": {
+        "componentId": "sw_d3",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_nd_p_60",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_146",
+      "from": {
+        "componentId": "sw_d3",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_nd_n_61",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_147",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_p1_62",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_148",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_p2_63",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_149",
+      "from": {
+        "componentId": "bit3_sb_p1_62",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_150",
+      "from": {
+        "componentId": "bit3_sb_p2_63",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_151",
+      "from": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit3_sb_n2_65",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_152",
+      "from": {
+        "componentId": "bit3_sb_n2_65",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_153",
+      "from": {
+        "componentId": "sw_d3",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_p1_62",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_154",
+      "from": {
+        "componentId": "sw_d3",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_155",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_p2_63",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_156",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_sb_n2_65",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_157",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_rb_p1_66",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_158",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_rb_p2_67",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_159",
+      "from": {
+        "componentId": "bit3_rb_p1_66",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_160",
+      "from": {
+        "componentId": "bit3_rb_p2_67",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_161",
+      "from": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit3_rb_n2_69",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_162",
+      "from": {
+        "componentId": "bit3_rb_n2_69",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_163",
+      "from": {
+        "componentId": "bit3_nd_n_61",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_rb_p1_66",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_164",
+      "from": {
+        "componentId": "bit3_nd_n_61",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_165",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_rb_p2_67",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_166",
+      "from": {
+        "componentId": "sw_en",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_rb_n2_69",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_167",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_qp1_70",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_168",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_qp2_71",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_169",
+      "from": {
+        "componentId": "bit3_qp1_70",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_170",
+      "from": {
+        "componentId": "bit3_qp2_71",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_171",
+      "from": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit3_qn2_73",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_172",
+      "from": {
+        "componentId": "bit3_qn2_73",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_173",
+      "from": {
+        "componentId": "bit3_pdq_pd_78",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_174",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_qbp1_74",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_175",
+      "from": {
+        "componentId": "top_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "bit3_qbp2_75",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_176",
+      "from": {
+        "componentId": "bit3_qbp1_74",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_177",
+      "from": {
+        "componentId": "bit3_qbp2_75",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_178",
+      "from": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bit3_qbn2_77",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_179",
+      "from": {
+        "componentId": "bit3_qbn2_77",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "bot_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_180",
+      "from": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qp1_70",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_181",
+      "from": {
+        "componentId": "bit3_sb_n1_64",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_182",
+      "from": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qp2_71",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_183",
+      "from": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qn2_73",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_184",
+      "from": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbp1_74",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_185",
+      "from": {
+        "componentId": "bit3_rb_n1_68",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbn1_76",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_186",
+      "from": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbp2_75",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_187",
+      "from": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "bit3_qbn2_77",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_188",
+      "from": {
+        "componentId": "bit3_qn1_72",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_q3",
+        "pinId": "IN"
+      }
+    }
+  ]
+}

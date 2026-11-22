@@ -1,0 +1,707 @@
+{
+  "version": 1,
+  "name": "7 Kademeli Saf CMOS Halka Osilatör & Faz Monitörü (14T)",
+  "components": [
+    {
+      "id": "vcc_vcc_1",
+      "type": "VCC",
+      "x": 560,
+      "y": 40,
+      "rotation": 0,
+      "props": {
+        "label": "VDD"
+      }
+    },
+    {
+      "id": "gnd_gnd_2",
+      "type": "GND",
+      "x": 560,
+      "y": 340,
+      "rotation": 0,
+      "props": {
+        "label": "VSS"
+      }
+    },
+    {
+      "id": "p_1",
+      "type": "PMOS",
+      "x": 140,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P1"
+      }
+    },
+    {
+      "id": "n_1",
+      "type": "NMOS",
+      "x": 140,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N1"
+      }
+    },
+    {
+      "id": "led_p1",
+      "type": "LED",
+      "x": 180,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P1",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "p_2",
+      "type": "PMOS",
+      "x": 280,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P2"
+      }
+    },
+    {
+      "id": "n_2",
+      "type": "NMOS",
+      "x": 280,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N2"
+      }
+    },
+    {
+      "id": "led_p2",
+      "type": "LED",
+      "x": 320,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P2",
+        "color": "green"
+      }
+    },
+    {
+      "id": "p_3",
+      "type": "PMOS",
+      "x": 420,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P3"
+      }
+    },
+    {
+      "id": "n_3",
+      "type": "NMOS",
+      "x": 420,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N3"
+      }
+    },
+    {
+      "id": "led_p3",
+      "type": "LED",
+      "x": 460,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P3",
+        "color": "amber"
+      }
+    },
+    {
+      "id": "p_4",
+      "type": "PMOS",
+      "x": 560,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P4"
+      }
+    },
+    {
+      "id": "n_4",
+      "type": "NMOS",
+      "x": 560,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N4"
+      }
+    },
+    {
+      "id": "led_p4",
+      "type": "LED",
+      "x": 600,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P4",
+        "color": "red"
+      }
+    },
+    {
+      "id": "p_5",
+      "type": "PMOS",
+      "x": 700,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P5"
+      }
+    },
+    {
+      "id": "n_5",
+      "type": "NMOS",
+      "x": 700,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N5"
+      }
+    },
+    {
+      "id": "led_p5",
+      "type": "LED",
+      "x": 740,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P5",
+        "color": "cyan"
+      }
+    },
+    {
+      "id": "p_6",
+      "type": "PMOS",
+      "x": 840,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P6"
+      }
+    },
+    {
+      "id": "n_6",
+      "type": "NMOS",
+      "x": 840,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N6"
+      }
+    },
+    {
+      "id": "led_p6",
+      "type": "LED",
+      "x": 880,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P6",
+        "color": "green"
+      }
+    },
+    {
+      "id": "p_7",
+      "type": "PMOS",
+      "x": 980,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "P7"
+      }
+    },
+    {
+      "id": "n_7",
+      "type": "NMOS",
+      "x": 980,
+      "y": 220,
+      "rotation": 0,
+      "props": {
+        "label": "N7"
+      }
+    },
+    {
+      "id": "led_p7",
+      "type": "LED",
+      "x": 1020,
+      "y": 420,
+      "rotation": 0,
+      "props": {
+        "label": "P7",
+        "color": "amber"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_1",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_1",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_2",
+      "from": {
+        "componentId": "p_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_1",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_3",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_4",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p1",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_5",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_2",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_6",
+      "from": {
+        "componentId": "p_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_2",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_7",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_8",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p2",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_9",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_3",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_10",
+      "from": {
+        "componentId": "p_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_3",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_11",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_12",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p3",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_13",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_4",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_14",
+      "from": {
+        "componentId": "p_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_4",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_15",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_16",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p4",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_17",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_5",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_18",
+      "from": {
+        "componentId": "p_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_5",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_19",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_20",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p5",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_21",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_6",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_22",
+      "from": {
+        "componentId": "p_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_6",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_23",
+      "from": {
+        "componentId": "n_6",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_24",
+      "from": {
+        "componentId": "n_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p6",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_25",
+      "from": {
+        "componentId": "vcc_vcc_1",
+        "pinId": "OUT"
+      },
+      "to": {
+        "componentId": "p_7",
+        "pinId": "S"
+      }
+    },
+    {
+      "id": "w_26",
+      "from": {
+        "componentId": "p_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_7",
+        "pinId": "D"
+      }
+    },
+    {
+      "id": "w_27",
+      "from": {
+        "componentId": "n_7",
+        "pinId": "S"
+      },
+      "to": {
+        "componentId": "gnd_gnd_2",
+        "pinId": "OUT"
+      }
+    },
+    {
+      "id": "w_28",
+      "from": {
+        "componentId": "n_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "led_p7",
+        "pinId": "IN"
+      }
+    },
+    {
+      "id": "w_29",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_2",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_30",
+      "from": {
+        "componentId": "n_1",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_2",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_31",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_3",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_32",
+      "from": {
+        "componentId": "n_2",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_3",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_33",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_4",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_34",
+      "from": {
+        "componentId": "n_3",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_4",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_35",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_5",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_36",
+      "from": {
+        "componentId": "n_4",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_5",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_37",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_6",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_38",
+      "from": {
+        "componentId": "n_5",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_6",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_39",
+      "from": {
+        "componentId": "n_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_7",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_40",
+      "from": {
+        "componentId": "n_6",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_7",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_41",
+      "from": {
+        "componentId": "n_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "p_1",
+        "pinId": "G"
+      }
+    },
+    {
+      "id": "w_42",
+      "from": {
+        "componentId": "n_7",
+        "pinId": "D"
+      },
+      "to": {
+        "componentId": "n_1",
+        "pinId": "G"
+      }
+    }
+  ]
+}

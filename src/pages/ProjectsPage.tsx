@@ -57,12 +57,14 @@ const DIFFICULTY_OPTIONS: readonly DifficultyFilter[] = [
   'Başlangıç',
   'Orta',
   'İleri',
+  'Uzman',
 ] as const;
 
 const DIFFICULTY_BADGE_STYLES: Record<ProjectDifficulty, string> = {
   Başlangıç: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
   Orta: 'border-[#00E5FF]/40 bg-[#00E5FF]/10 text-[#00E5FF]',
   İleri: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
+  Uzman: 'border-fuchsia-500/50 bg-fuchsia-500/15 text-fuchsia-300 shadow-[0_0_12px_rgba(217,70,239,0.2)]',
 };
 
 interface SchematicNodeStyle {
@@ -292,7 +294,10 @@ function buildSchematicPreviewGeometry(doc: CircuitDocument): SchematicPreviewGe
     });
   }
 
-  const junctions = findWireJunctions(doc.wires, pathMap).map((j) => ({ x: j.x, y: j.y }));
+  const junctions =
+    doc.wires.length <= 250
+      ? findWireJunctions(doc.wires, pathMap).map((j) => ({ x: j.x, y: j.y }))
+      : [];
 
   if (!Number.isFinite(minX) || !Number.isFinite(minY)) {
     minX = -120;

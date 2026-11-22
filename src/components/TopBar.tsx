@@ -20,6 +20,7 @@ import {
   Undo2,
   Upload,
 } from 'lucide-react';
+import { EXAMPLE_PROJECTS } from '../data/exampleProjects';
 import type { CircuitPreset } from '../types/circuit';
 import type {
   SimulationStats,
@@ -550,7 +551,7 @@ export function TopBar({
                       }}
                       className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-[#00E5FF]/35 bg-[#00E5FF]/10 px-3 py-2 text-xs font-semibold text-[#00E5FF] transition-all hover:border-[#00E5FF]/60 hover:bg-[#00E5FF]/20"
                     >
-                      <span>10 Örnek JSON Projesini Aç →</span>
+                      <span>{EXAMPLE_PROJECTS.length} Örnek JSON Projesini Aç →</span>
                     </button>
                   </div>
                 )}
