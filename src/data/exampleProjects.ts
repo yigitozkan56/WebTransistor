@@ -550,7 +550,7 @@ export const EXAMPLE_PROJECTS: readonly ExampleProjectMeta[] = [
     category: 'Mimari & İşlemci',
     difficulty: 'Uzman',
     transistorCount: 40980,
-    componentCount: 42718,
+    componentCount: 43334,
     wireCount: 102470,
     defaultClockHz: 15000,
     description:

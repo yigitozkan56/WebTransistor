@@ -1,4 +1,8 @@
-import { getComponentDimensions } from '../engine/componentDefs';
+import {
+  getComponentDimensions,
+  getComponentPins,
+  getPinWorldPosition,
+} from '../engine/componentDefs';
 import {
   isError,
   isHigh,
@@ -729,43 +733,126 @@ export class WebGLInstancedRenderer {
       return;
     }
 
-    // Massive VLSI chip mode (>15,000 wires): build direct flat wire buffer without object allocation
+    // Massive VLSI chip mode (>15,000 wires):
+    // 1. Skip redundant VCC/GND power-rail wires so only logic & signal traces remain visible.
+    // 2. Resolve exact pin coordinates and emit 90-degree Orthogonal Manhattan L-routing
+    //    instead of crossing diagonals!
     const compMap = new Map<string, CircuitComponent>();
+    const pixelPinMap = new Map<string, { x: number; y: number }>();
     for (let i = 0; i < components.length; i++) {
-      compMap.set(components[i].id, components[i]);
+      const c = components[i];
+      compMap.set(c.id, c);
+      if (c.type === 'PIXEL_MATRIX') {
+        const pins = getComponentPins(c);
+        for (let p = 0; p < pins.length; p++) {
+          const pos = getPinWorldPosition(c, pins[p]);
+          pixelPinMap.set(`${c.id}:${pins[p].id}`, pos);
+        }
+      }
     }
+
+    const resolvePinXY = (
+      comp: CircuitComponent,
+      pinId: string,
+    ): [number, number] => {
+      if (comp.type === 'PIXEL_MATRIX') {
+        const pt = pixelPinMap.get(`${comp.id}:${pinId}`);
+        return pt ? [pt.x, pt.y] : [comp.x, comp.y];
+      }
+      let ox = 0;
+      let oy = 0;
+      if (comp.type === 'NMOS') {
+        if (pinId === 'G') ox = -20;
+        else if (pinId === 'D') oy = -20;
+        else if (pinId === 'S') oy = 20;
+      } else if (comp.type === 'PMOS') {
+        if (pinId === 'G') ox = -20;
+        else if (pinId === 'S') oy = -20;
+        else if (pinId === 'D') oy = 20;
+      } else if (comp.type === 'TOGGLE_SWITCH' || comp.type === 'PUSH_BUTTON') {
+        ox = 40;
+      } else if (comp.type === 'LED') {
+        ox = -20;
+      }
+      if (comp.rotation === 90) return [comp.x - oy, comp.y + ox];
+      if (comp.rotation === 180) return [comp.x - ox, comp.y - oy];
+      if (comp.rotation === 270) return [comp.x + oy, comp.y - ox];
+      return [comp.x + ox, comp.y + oy];
+    };
 
     const maxRenderedWires = Math.min(wireCount, 260_000);
     const wireStride = Math.max(1, Math.floor(wireCount / maxRenderedWires));
-    const estimatedSegments = Math.ceil(wireCount / wireStride);
+    const maxSegments = Math.ceil(wireCount / wireStride) * 2;
 
-    const requiredVertFloats = estimatedSegments * 2 * WIRE_VERTEX_FLOAT_STRIDE;
+    const requiredVertFloats = maxSegments * 2 * WIRE_VERTEX_FLOAT_STRIDE;
     if (this.wireVertexData.length < requiredVertFloats) {
       this.wireVertexData = new Float32Array(requiredVertFloats);
     }
-    if (this.wireSegmentWireIndex.length < estimatedSegments) {
-      this.wireSegmentWireIndex = new Int32Array(estimatedSegments);
+    if (this.wireSegmentWireIndex.length < maxSegments) {
+      this.wireSegmentWireIndex = new Int32Array(maxSegments);
     }
 
     const vData = this.wireVertexData;
     const segWireIdx = this.wireSegmentWireIndex;
     let segCursor = 0;
 
-    for (let i = 0; i < wireCount && segCursor < estimatedSegments; i += wireStride) {
+    const pushSeg = (ax: number, ay: number, bx: number, by: number, wIdx: number) => {
+      if (segCursor >= maxSegments) return;
+      const base = segCursor * 6;
+      vData[base + 0] = ax;
+      vData[base + 1] = ay;
+      vData[base + 2] = 0.0;
+      vData[base + 3] = bx;
+      vData[base + 4] = by;
+      vData[base + 5] = 0.0;
+      segWireIdx[segCursor] = wIdx;
+      segCursor++;
+    };
+
+    for (let i = 0; i < wireCount && segCursor < maxSegments; i += wireStride) {
       const w = wires[i];
       const fromComp = compMap.get(w.from.componentId);
       const toComp = compMap.get(w.to.componentId);
       if (!fromComp || !toComp) continue;
+      if (
+        fromComp.type === 'VCC' ||
+        fromComp.type === 'GND' ||
+        toComp.type === 'VCC' ||
+        toComp.type === 'GND'
+      ) {
+        continue;
+      }
 
-      const base = segCursor * 6;
-      vData[base + 0] = fromComp.x;
-      vData[base + 1] = fromComp.y;
-      vData[base + 2] = 0.0;
-      vData[base + 3] = toComp.x;
-      vData[base + 4] = toComp.y;
-      vData[base + 5] = 0.0;
-      segWireIdx[segCursor] = i;
-      segCursor++;
+      const [x1, y1] = resolvePinXY(fromComp, w.from.pinId);
+      const [x2, y2] = resolvePinXY(toComp, w.to.pinId);
+
+      if (Math.abs(x1 - x2) < 0.5 || Math.abs(y1 - y2) < 0.5) {
+        pushSeg(x1, y1, x2, y2, i);
+      } else {
+        // Keep Front I/O corridor clean: place vertical leg on the silicon die side (larger x),
+        // or use vertical-first when exiting a MOSFET Gate pin inside a routing channel.
+        const fromIsIo = x1 < 1200 && x2 >= 1800;
+        const toIsIo = x2 < 1200 && x1 >= 1800;
+        let horizontalFirst = true;
+        if (fromIsIo) {
+          horizontalFirst = true; // horizontal along IO's y1 -> vertical drop at die's x2
+        } else if (toIsIo) {
+          horizontalFirst = false; // vertical inside die at x1 -> horizontal along IO's y2
+        } else if (
+          w.from.pinId === 'G' &&
+          (fromComp.type === 'NMOS' || fromComp.type === 'PMOS')
+        ) {
+          horizontalFirst = false; // stay in Gate's -20px vertical channel first
+        }
+
+        if (horizontalFirst) {
+          pushSeg(x1, y1, x2, y1, i);
+          pushSeg(x2, y1, x2, y2, i);
+        } else {
+          pushSeg(x1, y1, x1, y2, i);
+          pushSeg(x1, y2, x2, y2, i);
+        }
+      }
     }
 
     this.wireSegmentCount = segCursor;
@@ -1049,7 +1136,10 @@ export class WebGLInstancedRenderer {
       gl.uniform2f(this.wireLocs.offset, viewport.x, viewport.y);
       gl.uniform1f(this.wireLocs.zoom, viewport.zoom);
       gl.uniform1f(this.wireLocs.time, timeSec);
-      gl.uniform1f(this.wireLocs.wireAlphaScale, overlay2dDetailedActive ? 0.28 : 1.0);
+      gl.uniform1f(
+        this.wireLocs.wireAlphaScale,
+        overlay2dDetailedActive ? 0.28 : this.wireSegmentCount > 20_000 ? 0.42 : 1.0,
+      );
 
       gl.bindVertexArray(this.wireVao);
       gl.bindBuffer(gl.ARRAY_BUFFER, this.wireVbo);

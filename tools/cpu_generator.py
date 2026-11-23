@@ -41,13 +41,16 @@ from typing import Dict, List, Optional, Sequence, Tuple
 # =============================================================================
 
 GRID = 20
-PITCH_X = 60  # 40px transistor width + 20px channel spacing (multiple of 20)
-PITCH_Y = 60  # 40px transistor height + 20px channel spacing (multiple of 20)
+PITCH_X = 80  # 40px transistor width + 40px routing channel (multiple of 20)
+PITCH_Y = 80  # 40px transistor height + 40px routing channel (multiple of 20)
+
+RAIL_VCC = "__RAIL_VCC__"
+RAIL_GND = "__RAIL_GND__"
 
 
 @dataclass
 class BlockCursor:
-    """Places transistors on a non-overlapping 60x60px grid inside a macro block."""
+    """Places transistors on a non-overlapping 80x80px grid inside a macro block."""
     name: str
     origin_x: int
     origin_y: int
@@ -77,24 +80,51 @@ class NetlistBuilder:
         self.driven_nets: set[str] = set()
         self.rail_vcc_nets: set[str] = set()
         self.rail_gnd_nets: set[str] = set()
+        self.local_vcc_map: Dict[Tuple[str, int], str] = {}
+        self.local_gnd_map: Dict[Tuple[str, int], str] = {}
         self._id_seq = 0
         self._net_seq = 0
         self.blocks: Dict[str, BlockCursor] = {}
         self.active_block: Optional[BlockCursor] = None
 
-        # Global rails (one VCC and one GND per major block for clean fanout)
-        self.vcc_net = "NET_VDD"
-        self.gnd_net = "NET_VSS"
-        self.rail_vcc_nets.add(self.vcc_net)
-        self.rail_gnd_nets.add(self.gnd_net)
-        self.driven_nets.add(self.vcc_net)
-        self.driven_nets.add(self.gnd_net)
+        # Sentinel rail tokens resolved to per-row local VCC/GND pads inside each block
+        self.vcc_net = RAIL_VCC
+        self.gnd_net = RAIL_GND
 
-        # Place primary VCC and GND components at top-left power pad
-        vcc_id = self.add_component("VCC", 40, 40, label="VDD")
-        gnd_id = self.add_component("GND", 120, 40, label="VSS")
-        self.connect(self.vcc_net, vcc_id, "OUT")
-        self.connect(self.gnd_net, gnd_id, "OUT")
+    def _get_local_vcc(self, blk: BlockCursor, row: int) -> str:
+        key = (blk.name, row)
+        net = self.local_vcc_map.get(key)
+        if net is None:
+            net = f"NET_VDD_{blk.name}_{row}"
+            ry = blk.origin_y + row * PITCH_Y
+            rx = blk.origin_x - 80
+            cid = self.add_component("VCC", rx, ry, label="VDD")
+            self.connect(net, cid, "OUT")
+            self.rail_vcc_nets.add(net)
+            self.driven_nets.add(net)
+            self.local_vcc_map[key] = net
+        return net
+
+    def _get_local_gnd(self, blk: BlockCursor, row: int) -> str:
+        key = (blk.name, row)
+        net = self.local_gnd_map.get(key)
+        if net is None:
+            net = f"NET_VSS_{blk.name}_{row}"
+            ry = blk.origin_y + row * PITCH_Y
+            rx = blk.origin_x - 160
+            cid = self.add_component("GND", rx, ry, label="VSS")
+            self.connect(net, cid, "OUT")
+            self.rail_gnd_nets.add(net)
+            self.driven_nets.add(net)
+            self.local_gnd_map[key] = net
+        return net
+
+    def _resolve_net(self, net: str, blk: BlockCursor, row: int) -> str:
+        if net == RAIL_VCC:
+            return self._get_local_vcc(blk, row)
+        if net == RAIL_GND:
+            return self._get_local_gnd(blk, row)
+        return net
 
     def define_block(self, name: str, origin_x: int, origin_y: int, cols: int) -> BlockCursor:
         assert origin_x % GRID == 0 and origin_y % GRID == 0
@@ -149,22 +179,26 @@ class NetlistBuilder:
 
     def add_nmos(self, gate: str, drain: str, source: str) -> str:
         assert self.active_block is not None
-        x, y = self.active_block.next_pos()
-        self.active_block.nmos_count += 1
+        blk = self.active_block
+        x, y = blk.next_pos()
+        row = (y - blk.origin_y) // PITCH_Y
+        blk.nmos_count += 1
         cid = self.add_component("NMOS", x, y)
-        self.connect(gate, cid, "G")
-        self.connect(drain, cid, "D")
-        self.connect(source, cid, "S")
+        self.connect(self._resolve_net(gate, blk, row), cid, "G")
+        self.connect(self._resolve_net(drain, blk, row), cid, "D")
+        self.connect(self._resolve_net(source, blk, row), cid, "S")
         return cid
 
     def add_pmos(self, gate: str, source: str, drain: str) -> str:
         assert self.active_block is not None
-        x, y = self.active_block.next_pos()
-        self.active_block.pmos_count += 1
+        blk = self.active_block
+        x, y = blk.next_pos()
+        row = (y - blk.origin_y) // PITCH_Y
+        blk.pmos_count += 1
         cid = self.add_component("PMOS", x, y)
-        self.connect(gate, cid, "G")
-        self.connect(source, cid, "S")
-        self.connect(drain, cid, "D")
+        self.connect(self._resolve_net(gate, blk, row), cid, "G")
+        self.connect(self._resolve_net(source, blk, row), cid, "S")
+        self.connect(self._resolve_net(drain, blk, row), cid, "D")
         return cid
 
     def add_pull_down(self, net: str) -> str:
@@ -578,8 +612,56 @@ class NetlistBuilder:
     # 3. Wire Emission & Electrical Rule Check (ERC)
     # =========================================================================
 
+    def _order_net_endpoints(
+        self,
+        net_name: str,
+        uniq_pins: List[Tuple[str, str]],
+    ) -> List[Tuple[str, str]]:
+        """Orders net endpoints into a spatial chain instead of a star fan-out."""
+        comp_by_id = self.comp_by_id
+        if net_name in self.rail_vcc_nets or net_name in self.rail_gnd_nets:
+            return sorted(
+                uniq_pins,
+                key=lambda ep: (comp_by_id[ep[0]]["y"], comp_by_id[ep[0]]["x"]),
+            )
+        n = len(uniq_pins)
+        if n <= 2:
+            return uniq_pins
+        if n <= 300:
+            # Greedy Manhattan nearest-neighbor chain starting from first endpoint
+            coords = [(comp_by_id[c]["x"], comp_by_id[c]["y"]) for c, _ in uniq_pins]
+            used = [False] * n
+            order = [0]
+            used[0] = True
+            cur = 0
+            for _ in range(n - 1):
+                cx, cy = coords[cur]
+                best_j = -1
+                best_d = 10**12
+                for j in range(n):
+                    if used[j]:
+                        continue
+                    d = abs(coords[j][0] - cx) + abs(coords[j][1] - cy)
+                    if d < best_d:
+                        best_d = d
+                        best_j = j
+                used[best_j] = True
+                order.append(best_j)
+                cur = best_j
+            return [uniq_pins[i] for i in order]
+
+        # High-fanout clock / reset nets: serpentine block-local scanline order
+        def scan_key(ep: Tuple[str, str]) -> Tuple[int, int, int]:
+            c = comp_by_id[ep[0]]
+            bx = c["x"] // 4000
+            band = c["y"] // 240
+            sx = c["x"] if (band % 2 == 0) else -c["x"]
+            return (bx, band, sx)
+
+        return sorted(uniq_pins, key=scan_key)
+
     def build_document(self) -> Tuple[dict, dict]:
-        """Emits wires, runs full ERC validation, and returns (CircuitDocument, report)."""
+        """Emits spatially chained wires, runs full ERC validation, and returns (CircuitDocument, report)."""
         wires: List[dict] = []
         w_seq = 0
         for net_name, pins in self.nets.items():
@@ -589,13 +671,15 @@ class NetlistBuilder:
             uniq_pins = list(dict.fromkeys(pins))
             if len(uniq_pins) < 2:
                 continue
-            root_c, root_p = uniq_pins[0]
-            for c, p in uniq_pins[1:]:
+            ordered = self._order_net_endpoints(net_name, uniq_pins)
+            for i in range(len(ordered) - 1):
+                c1, p1 = ordered[i]
+                c2, p2 = ordered[i + 1]
                 w_seq += 1
                 wires.append({
                     "id": f"w{w_seq}",
-                    "from": {"componentId": root_c, "pinId": root_p},
-                    "to": {"componentId": c, "pinId": p},
+                    "from": {"componentId": c1, "pinId": p1},
+                    "to": {"componentId": c2, "pinId": p2},
                 })
 
         # ERC Checks
@@ -630,8 +714,8 @@ class NetlistBuilder:
                     floating_gates += 1
                 if dnet is None or snet is None:
                     floating_sd += 1
-                if (dnet == self.vcc_net and snet == self.gnd_net) or (
-                    snet == self.vcc_net and dnet == self.gnd_net
+                if (dnet in self.rail_vcc_nets and snet in self.rail_gnd_nets) or (
+                    snet in self.rail_vcc_nets and dnet in self.rail_gnd_nets
                 ):
                     direct_vcc_gnd_shorts += 1
 
@@ -808,46 +892,44 @@ def build_rom_program() -> List[int]:
 def synthesize_ws16_computer() -> Tuple[dict, dict]:
     nb = NetlistBuilder("WS-16: 16-Bit RISC Computer (30,000+ Transistors)")
 
-    # Macro-Block Floorplan (non-overlapping 20px-aligned silicon die regions)
-    # -------------------------------------------------------------------------
-    # Block 0 (I/O Panel & Clock): x=0..1800,     y=0..1800
-    # Block 1 (Control & ROM):     x=2000..8600,  y=0..3800
-    # Block 2 (16-Bit ALU):        x=0..8600,     y=4200..9000
-    # Block 3 (RegFile + PC/IR/SP):x=9000..18600, y=0..9000
-    # Block 4 (64x16 SRAM):        x=0..18600,    y=9400..20000
-    # Block 5 (MMIO LCD Driver):   x=19000..23000,y=0..6000
-    nb.define_block("IO_CLOCK",   1200,   120, cols=10)
-    nb.define_block("CONTROL_ROM",2000,   120, cols=100)
-    nb.define_block("ALU_16BIT",   120,  4200, cols=135)
-    nb.define_block("REGFILE",    9000,   120, cols=150)
-    nb.define_block("SRAM_64X16",  120,  9400, cols=290)
-    nb.define_block("MMIO_LCD",  19000,   120, cols=60)
+    # Macro-Block Floorplan (non-overlapping 80px-pitch silicon die regions)
+    # Front I/O Console sits isolated on the left: x=140..900, y=140..1200
+    # Silicon Die spans a balanced ~19k x 17k rectangle starting at x=2200:
+    #   Top Row    (y=160):   IO_CLOCK (2200..3320), CONTROL_ROM (4000..8720), MMIO_LCD (9600..13360)
+    #   Middle Row (y=2600):  ALU_16BIT (2200..5960), REGFILE (6800..21120)
+    #   Bottom Row (y=11000): SRAM_64X16 (2200..21160)
+    nb.define_block("IO_CLOCK",    2200,   160, cols=14)
+    nb.define_block("CONTROL_ROM", 4000,   160, cols=60)
+    nb.define_block("MMIO_LCD",    9600,   160, cols=48)
+    nb.define_block("ALU_16BIT",   2200,  2600, cols=48)
+    nb.define_block("REGFILE",     6800,  2600, cols=180)
+    nb.define_block("SRAM_64X16",  2200, 11000, cols=238)
 
     # =========================================================================
-    # BLOCK 0: Front I/O Panel (8x8 LCD, Switches, LEDs) & Divided Ring-Osc Clock
+    # BLOCK 0: Spacious Front I/O Console (8x8 LCD, Switches, LEDs) & Clock
     # =========================================================================
     nb.set_block("IO_CLOCK")
 
-    # 8x8 Raw Pixel Matrix (LCD) at top-left (center 360, 320 -> spans x:180..540, y:140..500)
+    # Band 1 (y=140..500): 8x8 Raw Pixel Matrix LCD (wires route right in y=140..500)
     lcd_id = nb.add_component(
-        "PIXEL_MATRIX", 360, 320, comp_id="lcd_matrix", matrixSize=8, color="cyan", label="WS-16 LCD"
+        "PIXEL_MATRIX", 340, 320, comp_id="lcd_matrix", matrixSize=8, color="cyan", label="WS-16 LCD"
     )
 
-    # User Switches (stacked cleanly at x=100, y=620..1020; NO forbidden keyBindings!)
+    # Band 2 (y=580..980): Spacious User Switches (100px vertical pitch, zero overlap)
     sw_auto_id = nb.add_component(
-        "TOGGLE_SWITCH", 100, 620, comp_id="sw_auto_clk", label="AUTO CLK", state=True, keyBinding="A"
+        "TOGGLE_SWITCH", 180, 580, comp_id="sw_auto_clk", label="AUTO", state=True, keyBinding="A"
     )
     btn_clk_id = nb.add_component(
-        "PUSH_BUTTON", 100, 700, comp_id="btn_step_clk", label="STEP CLK", state=False, keyBinding="C"
+        "PUSH_BUTTON", 180, 680, comp_id="btn_step_clk", label="STEP", state=False, keyBinding="C"
     )
     sw_rst_id = nb.add_component(
-        "TOGGLE_SWITCH", 100, 780, comp_id="sw_reset", label="RESET", state=False, keyBinding="Z"
+        "TOGGLE_SWITCH", 180, 780, comp_id="sw_reset", label="RST", state=False, keyBinding="Z"
     )
     sw_mode_id = nb.add_component(
-        "TOGGLE_SWITCH", 100, 860, comp_id="sw_mode", label="MODE (WAVE/FIB)", state=False, keyBinding="M"
+        "TOGGLE_SWITCH", 180, 880, comp_id="sw_mode", label="MODE", state=False, keyBinding="M"
     )
     sw_dir_id = nb.add_component(
-        "TOGGLE_SWITCH", 100, 940, comp_id="sw_dir", label="DIR (L/R)", state=False, keyBinding="D"
+        "TOGGLE_SWITCH", 180, 980, comp_id="sw_dir", label="DIR", state=False, keyBinding="D"
     )
 
     net_sw_auto = "SW_AUTO_CLK"
@@ -1196,26 +1278,28 @@ def synthesize_ws16_computer() -> Tuple[dict, dict]:
             nb.connect(pix_q, lcd_id, f"P_{y}_{x}")
 
     # =========================================================================
-    # BLOCK 0 (cont.): Status LEDs on Front I/O Panel
+    # BLOCK 0 (cont.): Band 3 (y=1080..1180) Status LEDs in 2 Clean Rows
     # =========================================================================
     nb.set_block("IO_CLOCK")
     status_leds = [
-        ("led_clk",   sys_clk,          "CLK",  "cyan",  620, 140),
-        ("led_halt",  halt_active,      "HALT", "red",   620, 220),
-        ("led_fz",    flag_z,           "Z",    "amber", 620, 300),
-        ("led_fc",    flag_c,           "C",    "amber", 620, 380),
-        ("led_fn",    flag_n,           "N",    "amber", 620, 460),
-        ("led_pc0",   pc_q[0],          "PC0",  "green", 720, 140),
-        ("led_pc1",   pc_q[1],          "PC1",  "green", 720, 220),
-        ("led_pc2",   pc_q[2],          "PC2",  "green", 720, 300),
-        ("led_pc3",   pc_q[3],          "PC3",  "green", 720, 380),
-        ("led_pc4",   pc_q[4],          "PC4",  "green", 720, 460),
-        ("led_r3_0",  reg_matrix[3][0], "D0",   "cyan",  820, 140),
-        ("led_r3_1",  reg_matrix[3][1], "D1",   "cyan",  820, 220),
-        ("led_r3_2",  reg_matrix[3][2], "D2",   "cyan",  820, 300),
-        ("led_r3_3",  reg_matrix[3][3], "D3",   "cyan",  820, 380),
-        ("led_fsm_f", st_fetch,         "FET",  "green", 820, 460),
-        ("led_fsm_e", st_exec,          "EXE",  "amber", 920, 460),
+        # Row 1 (y=1080): System, FSM & ALU Flags (80px pitch, x=180..660)
+        ("led_clk",   sys_clk,          "CLK",  "cyan",  180, 1080),
+        ("led_fsm_f", st_fetch,         "FET",  "green", 260, 1080),
+        ("led_fsm_e", st_exec,          "EXE",  "amber", 340, 1080),
+        ("led_halt",  halt_active,      "HALT", "red",   420, 1080),
+        ("led_fz",    flag_z,           "Z",    "amber", 500, 1080),
+        ("led_fc",    flag_c,           "C",    "amber", 580, 1080),
+        ("led_fn",    flag_n,           "N",    "amber", 660, 1080),
+        # Row 2 (y=1180): Program Counter & Data Bus Low Nibble (80px pitch, x=180..840)
+        ("led_pc0",   pc_q[0],          "PC0",  "green", 180, 1180),
+        ("led_pc1",   pc_q[1],          "PC1",  "green", 260, 1180),
+        ("led_pc2",   pc_q[2],          "PC2",  "green", 340, 1180),
+        ("led_pc3",   pc_q[3],          "PC3",  "green", 420, 1180),
+        ("led_pc4",   pc_q[4],          "PC4",  "green", 500, 1180),
+        ("led_r3_0",  reg_matrix[3][0], "D0",   "cyan",  600, 1180),
+        ("led_r3_1",  reg_matrix[3][1], "D1",   "cyan",  680, 1180),
+        ("led_r3_2",  reg_matrix[3][2], "D2",   "cyan",  760, 1180),
+        ("led_r3_3",  reg_matrix[3][3], "D3",   "cyan",  840, 1180),
     ]
     for cid, net_n, lbl, col, lx, ly in status_leds:
         nb.add_component("LED", lx, ly, comp_id=cid, label=lbl, color=col)

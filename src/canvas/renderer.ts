@@ -594,9 +594,93 @@ export function renderCanvasFrame(params: RenderFrameParams): void {
     ctx.translate(viewport.x, viewport.y);
     ctx.scale(viewport.zoom, viewport.zoom);
 
+    // Render clean architectural macro-block floorplan frames & non-overlapping pill badges
+    // when zoomed out on WS-16 die
+    if (
+      components.length > 20000 &&
+      viewport.zoom < 0.22 &&
+      components.some((c) => c.id === 'lcd_matrix')
+    ) {
+      const floorplanBlocks = [
+        { label: 'I/O', x: 60, y: 60, w: 1020, h: 1220, color: '#00E5FF' },
+        { label: 'CLK', x: 1960, y: 80, w: 1360, h: 1040, color: '#38BDF8' },
+        { label: 'CTRL & ROM', x: 3760, y: 80, w: 5060, h: 1680, color: '#A855F7' },
+        { label: 'LCD DRV', x: 9360, y: 80, w: 4100, h: 1760, color: '#22C55E' },
+        { label: '16-BIT ALU', x: 1960, y: 2520, w: 4100, h: 6340, color: '#F59E0B' },
+        { label: '16×16 REGFILE + PC/IR/SP', x: 6560, y: 2520, w: 14660, h: 7860, color: '#00E5FF' },
+        { label: '64×16 CMOS SRAM (1,024-BIT)', x: 1960, y: 10920, w: 19300, h: 6580, color: '#38BDF8' },
+      ];
+      ctx.save();
+      const invZ = 1 / Math.max(viewport.zoom, 0.002);
+      const fontSize = 9.5 * invZ;
+      ctx.font = `700 ${fontSize.toFixed(1)}px "JetBrains Mono", monospace`;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      for (const blk of floorplanBlocks) {
+        ctx.fillStyle = 'rgba(16, 21, 30, 0.25)';
+        ctx.fillRect(blk.x, blk.y, blk.w, blk.h);
+        ctx.strokeStyle = `${blk.color}70`;
+        ctx.lineWidth = 1.5 * invZ;
+        ctx.strokeRect(blk.x, blk.y, blk.w, blk.h);
+
+        const padX = 4 * invZ;
+        const textMetrics = ctx.measureText(blk.label);
+        const maxTextW = Math.max(12 * invZ, blk.w - padX * 2);
+        const pillW = Math.min(blk.w - 4 * invZ, textMetrics.width + padX * 2);
+        const pillH = 15 * invZ;
+        const pillX = blk.x + 2 * invZ;
+        const pillY = blk.y + 2 * invZ;
+
+        ctx.fillStyle = 'rgba(9, 12, 16, 0.90)';
+        ctx.fillRect(pillX, pillY, pillW, pillH);
+        ctx.strokeStyle = `${blk.color}99`;
+        ctx.lineWidth = 1 * invZ;
+        ctx.strokeRect(pillX, pillY, pillW, pillH);
+
+        ctx.fillStyle = blk.color;
+        ctx.fillText(blk.label, pillX + padX, pillY + pillH / 2, maxTextW);
+      }
+      ctx.restore();
+    }
+
     // Render crisp 2D pixels & labels for visible interactive I/O components (LCD, Switches, LEDs)
     // even on massive 40,000+ transistor VLSI dies (capped at 64 I/O elements -> <0.1ms cost!)
-    if (viewport.zoom >= LOD_ZOOM_THRESHOLD) {
+    if (viewport.zoom >= 0.22) {
+      if (components.length > 20000 && components.some((c) => c.id === 'lcd_matrix')) {
+        ctx.save();
+        ctx.font = '700 12px "JetBrains Mono", monospace';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'bottom';
+
+        // LCD Display Section Frame (label sits cleanly above border)
+        ctx.fillStyle = 'rgba(14, 19, 26, 0.45)';
+        traceRoundedRect(ctx, 112, 112, 456, 412, 14);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(0, 229, 255, 0.28)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.fillStyle = '#00E5FF';
+        ctx.fillText('WS-16 8×8 PIXEL LCD', 118, 105);
+
+        // Control Switches Section Frame (generous padding around AUTO..DIR)
+        ctx.fillStyle = 'rgba(14, 19, 26, 0.45)';
+        traceRoundedRect(ctx, 112, 552, 140, 456, 14);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.28)';
+        ctx.stroke();
+        ctx.fillStyle = '#F59E0B';
+        ctx.fillText('CONTROLS', 118, 546);
+
+        // Status LEDs Section Frame (snugly wraps x=180..840, y=1080..1180)
+        ctx.fillStyle = 'rgba(14, 19, 26, 0.45)';
+        traceRoundedRect(ctx, 112, 1048, 796, 168, 14);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(34, 197, 94, 0.28)';
+        ctx.stroke();
+        ctx.fillStyle = '#22C55E';
+        ctx.fillText('CPU STATUS · FLAGS · PC[4:0] · DATA[3:0]', 118, 1042);
+        ctx.restore();
+      }
       const invZ = 1 / Math.max(viewport.zoom, 0.0001);
       const viewMinX = -viewport.x * invZ - 240;
       const viewMaxX = (width - viewport.x) * invZ + 240;

@@ -488,9 +488,9 @@ function drawToggleSwitch(
   const displayLabel = label ? (keyTag ? `${label} ${keyTag}` : label) : keyTag;
 
   if (displayLabel) {
-    if (zoom >= 0.35) {
+    if (zoom >= 0.24) {
       ctx.fillStyle = on ? THEME.textPrimary : THEME.textMuted;
-      ctx.font = '600 9px "Inter", sans-serif';
+      ctx.font = '600 9.5px "Inter", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(displayLabel, -3, -8, 62);
@@ -576,7 +576,7 @@ function drawPushButton(
   ctx.fillStyle = pressed ? THEME.high : '#384152';
   ctx.fill();
 
-  if (zoom >= 0.35) {
+  if (zoom >= 0.24) {
     const keyTag = comp.props.keyBinding ? `[${comp.props.keyBinding.toUpperCase()}]` : '';
     const baseLabel = comp.props.label || 'PUSH';
     const text = keyTag ? `${baseLabel} ${keyTag}` : baseLabel;
@@ -648,7 +648,7 @@ function drawLed(
   ctx.fillStyle = lit ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.12)';
   ctx.fill();
 
-  if (comp.props.label && zoom >= 0.4) {
+  if (comp.props.label && zoom >= 0.24) {
     ctx.save();
     if (comp.rotation === 180) {
       ctx.translate(20, 0);

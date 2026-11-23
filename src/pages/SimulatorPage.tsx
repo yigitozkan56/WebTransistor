@@ -101,10 +101,10 @@ function computeFitViewport(
 ): Viewport {
   const width = Math.max(320, canvasWidth);
   const height = Math.max(240, canvasHeight);
-  const leftPad = 64;
-  const rightPad = reserveFloatingOverlay && width >= 720 ? 316 : 64;
-  const topPad = 64;
-  const bottomPad = 64;
+  const leftPad = 48;
+  const rightPad = reserveFloatingOverlay && width >= 680 ? 348 : 48;
+  const topPad = 72;
+  const bottomPad = 72;
   const availW = Math.max(160, width - leftPad - rightPad);
   const availH = Math.max(160, height - topPad - bottomPad);
   const targetCenterX = leftPad + availW / 2;
