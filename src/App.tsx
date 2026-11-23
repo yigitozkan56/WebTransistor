@@ -84,6 +84,15 @@ export default function App() {
       setExternalLoadRequest({
         doc: res.document,
         clockHz: project.defaultClockHz,
+        presetMeta: {
+          id: project.id,
+          name: project.title,
+          subtitle: project.subtitle,
+          description: project.description,
+          controlsHint: project.controlsHint,
+          defaultClockHz: project.defaultClockHz,
+          document: res.document,
+        },
         nonce: nextNonce(),
       });
       navigate('simulator');
@@ -150,6 +159,7 @@ export default function App() {
         <SimulatorPage
           isActive={route === 'simulator'}
           externalLoadRequest={externalLoadRequest}
+          onOpenProject={handleOpenProject}
           onNavigateProjects={handleNavigateProjects}
           onNavigateWiki={handleNavigateWiki}
         />

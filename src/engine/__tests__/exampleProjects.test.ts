@@ -40,7 +40,7 @@ describe('PureSilicon 10 Example JSON Projects — Schema, Grid & Manifest Integ
       'Ekran & Çıkış',
       'Mimari & İşlemci',
     ]);
-    expect(EXAMPLE_PROJECTS).toHaveLength(25);
+    expect(EXAMPLE_PROJECTS).toHaveLength(26);
 
     const expectedIds = [
       '01-cmos-inverter-not',
@@ -68,6 +68,7 @@ describe('PureSilicon 10 Example JSON Projects — Schema, Grid & Manifest Integ
       '23-4x4-sram-memory-bank',
       '24-4bit-array-multiplier',
       '25-8x8-gpu-pixel-rasterizer',
+      '26-16bit-risc-computer-30k',
     ];
 
     EXAMPLE_PROJECTS.forEach((meta, idx) => {

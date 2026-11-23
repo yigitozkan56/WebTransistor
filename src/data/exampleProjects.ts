@@ -540,6 +540,27 @@ export const EXAMPLE_PROJECTS: readonly ExampleProjectMeta[] = [
     controlsHint: 'X=[A,B,C] (0..7), Y=[Q,W,E] (0..7), Mod=[M] (0: Tek Piksel İmleç, 1: Nişangâh / Crosshair).',
     tags: ['Uzman', 'GPU', '8x8', 'Pixel Matrix', '1292T', 'Rasterizer', 'Mimari'],
   },
+  {
+    id: '26-16bit-risc-computer-30k',
+    order: 26,
+    filename: '26-16bit-risc-computer-30k.json',
+    jsonPath: '/projects/26-16bit-risc-computer-30k.json',
+    title: '16-Bit RISC Computer (40,980 Transistors)',
+    subtitle: '40.980 Ham MOSFET · 16-Bit ALU, 16×16 Register File, 64×16 SRAM, ROM & 8×8 MMIO LCD',
+    category: 'Mimari & İşlemci',
+    difficulty: 'Uzman',
+    transistorCount: 40980,
+    componentCount: 42718,
+    wireCount: 102470,
+    defaultClockHz: 15000,
+    description:
+      'Hazır mantık kapısı veya siyah kutu IC kullanmadan, yalnızca 20.490 NMOS + 20.490 PMOS (toplam 40.980 ham transistör) ile sentezlenmiş tam teşekküllü 16-bit RISC bilgisayar (WS-16): 16-bit ALU + Barrel Shifter, 16×16-bit çift portlu Register File (R0–R15), PC/IR/SP, Fetch-Decode-Execute FSM, 64×16-bit (1024-bit) CMOS SRAM, 32×16-bit makine kodu ROM ve 8×8 MMIO LCD sürücü!',
+    howItWorks:
+      'İki fazlı örtüşmesiz (non-overlapping) saat üreteciyle sürülen 3 aşamalı Fetch→Decode→Execute FSM, 32 komutluk gömülü ROM programını çalıştırır. R15 yazmacı fiziksel MODE/DIR anahtarlarını okur: Mod 0’da 8×8 LCD’de yönü değiştirilebilir kayan dalga tarayıcısı çizer; Mod 1’de 16-bit ALU ile gerçek zamanlı Fibonacci dizisini hesaplayıp 64×16 SRAM’e yazar, geri okur ve 8×8 ekranda ikili desen olarak gösterir.',
+    controlsHint:
+      'AUTO CLK=[A] (Otomatik Saat), STEP CLK=[C] (Tek Adım), RESET=[Z] (Sıfırla), MODE=[M] (0: Kayan Dalga / 1: Fibonacci), DIR=[D] (Sol/Sağ Yön).',
+    tags: ['Uzman', '16-Bit', 'RISC', 'CPU', '40980T', 'SRAM', 'ALU', 'LCD', 'Mimari'],
+  },
 ] as const;
 
 const jsonCache = new Map<string, string>();

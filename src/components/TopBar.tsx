@@ -55,6 +55,7 @@ export interface TopBarProps {
   onOpenHelp: () => void;
   onMacroDuplicateAll?: (copies: number) => void;
   onGenerateBenchmarkChip?: (targetTransistors: number, recommendedHz?: number) => void;
+  onOpenProject?: (projectId: string) => void;
   onNavigateProjects?: () => void;
 }
 
@@ -122,6 +123,7 @@ export function TopBar({
   onOpenHelp,
   onMacroDuplicateAll,
   onGenerateBenchmarkChip,
+  onOpenProject,
   onNavigateProjects,
 }: TopBarProps) {
   const [presetsOpen, setPresetsOpen] = useState(false);
@@ -516,6 +518,37 @@ export function TopBar({
                     );
                   })}
                 </div>
+
+                {onOpenProject && (
+                  <div className="mt-2 border-t border-[#1E2633] pt-2">
+                    <div className="px-2 py-1 text-[10px] font-semibold tracking-wider text-fuchsia-400 uppercase">
+                      Öne Çıkan Tam İşlemci Mimarisi
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPresetsOpen(false);
+                        onOpenProject('26-16bit-risc-computer-30k');
+                      }}
+                      className="w-full rounded-xl border border-fuchsia-500/40 bg-fuchsia-500/10 p-2.5 text-left transition-all hover:border-fuchsia-400 hover:bg-fuchsia-500/20"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xs font-bold text-fuchsia-200">
+                          16-Bit RISC Computer (40,980 Transistors)
+                        </span>
+                        <span className="shrink-0 rounded border border-fuchsia-500/40 bg-[#090C10] px-1.5 py-0.5 font-mono text-[10px] text-fuchsia-300">
+                          40.9k TX
+                        </span>
+                      </div>
+                      <div className="mt-0.5 text-[11px] font-medium text-slate-300">
+                        16-Bit ALU · 16×16 RF · 64×16 SRAM · ROM · 8×8 LCD
+                      </div>
+                      <p className="mt-1 line-clamp-2 text-[11px] leading-snug text-slate-400">
+                        %100 ham NMOS/PMOS transistörlü WS-16 bilgisayar: [A] Otomatik Saat, [M] Dalga/Fibonacci, [D] Yön, [Z] Reset.
+                      </p>
+                    </button>
+                  </div>
+                )}
 
                 {onMacroDuplicateAll && (
                   <div className="mt-2 border-t border-[#1E2633] pt-2">

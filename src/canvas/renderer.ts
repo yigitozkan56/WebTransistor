@@ -594,6 +594,46 @@ export function renderCanvasFrame(params: RenderFrameParams): void {
     ctx.translate(viewport.x, viewport.y);
     ctx.scale(viewport.zoom, viewport.zoom);
 
+    // Render crisp 2D pixels & labels for visible interactive I/O components (LCD, Switches, LEDs)
+    // even on massive 40,000+ transistor VLSI dies (capped at 64 I/O elements -> <0.1ms cost!)
+    if (viewport.zoom >= LOD_ZOOM_THRESHOLD) {
+      const invZ = 1 / Math.max(viewport.zoom, 0.0001);
+      const viewMinX = -viewport.x * invZ - 240;
+      const viewMaxX = (width - viewport.x) * invZ + 240;
+      const viewMinY = -viewport.y * invZ - 240;
+      const viewMaxY = (height - viewport.y) * invZ + 240;
+      let drawnIo = 0;
+      for (let i = 0; i < components.length && drawnIo < 64; i++) {
+        const comp = components[i];
+        const t = comp.type;
+        if (
+          t !== 'PIXEL_MATRIX' &&
+          t !== 'TOGGLE_SWITCH' &&
+          t !== 'PUSH_BUTTON' &&
+          t !== 'LED'
+        ) {
+          continue;
+        }
+        if (
+          comp.x < viewMinX ||
+          comp.x > viewMaxX ||
+          comp.y < viewMinY ||
+          comp.y > viewMaxY
+        ) {
+          continue;
+        }
+        drawComponent({
+          ctx,
+          comp,
+          pins: getComponentPins(comp),
+          sim,
+          snapshot,
+          zoom: viewport.zoom,
+        });
+        drawnIo++;
+      }
+    }
+
     // Draw selection highlights if a modest selection exists
     if (selection.componentIds.size > 0 && selection.componentIds.size <= 500 && components.length <= 50000) {
       const strokeW = Math.max(1.2, 1.5 / viewport.zoom);

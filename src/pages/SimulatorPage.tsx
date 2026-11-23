@@ -38,12 +38,14 @@ import type {
 export interface ExternalCircuitLoadRequest {
   doc: CircuitDocument;
   clockHz?: number;
+  presetMeta?: import('../types/circuit').CircuitPreset;
   nonce: number;
 }
 
 export interface SimulatorPageProps {
   isActive: boolean;
   externalLoadRequest: ExternalCircuitLoadRequest | null;
+  onOpenProject?: (projectId: string) => void;
   onNavigateProjects: () => void;
   onNavigateWiki: () => void;
 }
@@ -171,6 +173,7 @@ function readStatsFromSimulator(sim: ISimulator, prevFps = 60): SimulationStats 
 export function SimulatorPage({
   isActive,
   externalLoadRequest,
+  onOpenProject,
   onNavigateProjects,
   onNavigateWiki,
 }: SimulatorPageProps) {
@@ -202,6 +205,9 @@ export function SimulatorPage({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [activePresetId, setActivePresetId] = useState<string | null>(INITIAL_PRESET.id);
+  const [externalPresetMeta, setExternalPresetMeta] = useState<
+    import('../types/circuit').CircuitPreset | null
+  >(null);
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [clockHz, setClockHz] = useState<number>(INITIAL_PRESET.defaultClockHz);
   const [viewport, setViewport] = useState<Viewport>(
@@ -230,8 +236,8 @@ export function SimulatorPage({
   const lastReloadEpochRef = useRef<number>(0);
 
   const activePreset = useMemo(
-    () => (activePresetId ? getPresetById(activePresetId) ?? null : null),
-    [activePresetId],
+    () => (activePresetId ? getPresetById(activePresetId) ?? null : externalPresetMeta),
+    [activePresetId, externalPresetMeta],
   );
 
   const showToast = useCallback((kind: 'error' | 'info', message: string) => {
@@ -314,6 +320,7 @@ export function SimulatorPage({
 
     dispatch({ type: 'LOAD_DOCUMENT', document: externalLoadRequest.doc });
     setActivePresetId(null);
+    setExternalPresetMeta(externalLoadRequest.presetMeta ?? null);
     setClockHz(externalLoadRequest.clockHz ?? 6);
     setIsRunning(true);
     setSelection(EMPTY_SELECTION);
@@ -343,7 +350,22 @@ export function SimulatorPage({
         return false;
       }
       const { components: comps, hasSelection: selected } = latestFitRef.current;
-      setViewport(computeFitViewport(comps, rect.width, rect.height, !selected));
+      // For massive VLSI chips (5,000+ components) with an interactive I/O panel (PIXEL_MATRIX + switches),
+      // focus initial view on the I/O panel so the LCD & switches are immediately usable (press F to view full die).
+      let fitTargets = comps;
+      if (comps.length > 5000) {
+        const ioComps = comps.filter(
+          (c) =>
+            c.type === 'PIXEL_MATRIX' ||
+            c.type === 'TOGGLE_SWITCH' ||
+            c.type === 'PUSH_BUTTON' ||
+            c.type === 'LED',
+        );
+        if (ioComps.some((c) => c.type === 'PIXEL_MATRIX') && ioComps.length > 0) {
+          fitTargets = ioComps;
+        }
+      }
+      setViewport(computeFitViewport(fitTargets, rect.width, rect.height, !selected));
       pendingFitRef.current = false;
       return true;
     };
@@ -860,6 +882,7 @@ export function SimulatorPage({
         onOpenHelp={() => setHelpOpen(true)}
         onMacroDuplicateAll={handleMacroDuplicateAll}
         onGenerateBenchmarkChip={handleGenerateBenchmarkChip}
+        onOpenProject={onOpenProject}
         onNavigateProjects={onNavigateProjects}
       />
 

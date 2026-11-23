@@ -226,7 +226,31 @@ function buildSchematicPreviewGeometry(doc: CircuitDocument): SchematicPreviewGe
     if (y > maxY) maxY = y;
   };
 
-  const components: PreviewComponentRender[] = doc.components.map((comp) => {
+  const isMassiveVlsi = doc.components.length > 3000;
+  const previewCompsSource = isMassiveVlsi
+    ? (() => {
+        const io = doc.components.filter(
+          (c) =>
+            c.type === 'PIXEL_MATRIX' ||
+            c.type === 'TOGGLE_SWITCH' ||
+            c.type === 'PUSH_BUTTON' ||
+            c.type === 'LED',
+        );
+        const step = Math.max(1, Math.floor(doc.components.length / 900));
+        const sampled: CircuitComponent[] = [...io];
+        const seen = new Set(io.map((c) => c.id));
+        for (let i = 0; i < doc.components.length; i += step) {
+          const c = doc.components[i];
+          if (!seen.has(c.id)) {
+            sampled.push(c);
+            seen.add(c.id);
+          }
+        }
+        return sampled;
+      })()
+    : doc.components;
+
+  const components: PreviewComponentRender[] = previewCompsSource.map((comp) => {
     const aabb = getComponentAABB(comp);
     expandBounds(aabb.minX, aabb.minY);
     expandBounds(aabb.maxX, aabb.maxY);
@@ -273,25 +297,27 @@ function buildSchematicPreviewGeometry(doc: CircuitDocument): SchematicPreviewGe
   const pathMap = new Map<string, WirePath>();
   const wires: PreviewWireRender[] = [];
 
-  for (let i = 0; i < doc.wires.length; i++) {
-    const wire = doc.wires[i];
-    const path = computeWirePath(wire, compMap, 'orthogonal');
-    if (!path || path.points.length < 2) continue;
+  if (!isMassiveVlsi) {
+    for (let i = 0; i < doc.wires.length; i++) {
+      const wire = doc.wires[i];
+      const path = computeWirePath(wire, compMap, 'orthogonal');
+      if (!path || path.points.length < 2) continue;
 
-    pathMap.set(wire.id, path);
-    for (let j = 0; j < path.points.length; j++) {
-      expandBounds(path.points[j].x, path.points[j].y);
+      pathMap.set(wire.id, path);
+      for (let j = 0; j < path.points.length; j++) {
+        expandBounds(path.points[j].x, path.points[j].y);
+      }
+
+      const pointsAttr = path.points
+        .map((pt) => `${Math.round(pt.x * 10) / 10},${Math.round(pt.y * 10) / 10}`)
+        .join(' ');
+
+      wires.push({
+        id: wire.id,
+        pointsAttr,
+        stroke: wire.color ?? '#38BDF8',
+      });
     }
-
-    const pointsAttr = path.points
-      .map((pt) => `${Math.round(pt.x * 10) / 10},${Math.round(pt.y * 10) / 10}`)
-      .join(' ');
-
-    wires.push({
-      id: wire.id,
-      pointsAttr,
-      stroke: wire.color ?? '#38BDF8',
-    });
   }
 
   const junctions =
