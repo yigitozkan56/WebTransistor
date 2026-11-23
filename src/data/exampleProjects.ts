@@ -541,10 +541,10 @@ export const EXAMPLE_PROJECTS: readonly ExampleProjectMeta[] = [
     tags: ['Uzman', 'GPU', '8x8', 'Pixel Matrix', '1292T', 'Rasterizer', 'Mimari'],
   },
   {
-    id: '26-16bit-risc-computer-30k',
+    id: '26-ws16-risc-computer-41k',
     order: 26,
-    filename: '26-16bit-risc-computer-30k.json',
-    jsonPath: '/projects/26-16bit-risc-computer-30k.json',
+    filename: '26-ws16-risc-computer-41k.json',
+    jsonPath: '/projects/26-ws16-risc-computer-41k.json',
     title: '16-Bit RISC Computer (40,980 Transistors)',
     subtitle: '40.980 Ham MOSFET · 16-Bit ALU, 16×16 Register File, 64×16 SRAM, ROM & 8×8 MMIO LCD',
     category: 'Mimari & İşlemci',

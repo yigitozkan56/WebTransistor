@@ -528,7 +528,7 @@ export function TopBar({
                       type="button"
                       onClick={() => {
                         setPresetsOpen(false);
-                        onOpenProject('26-16bit-risc-computer-30k');
+                        onOpenProject('26-ws16-risc-computer-41k');
                       }}
                       className="w-full rounded-xl border border-fuchsia-500/40 bg-fuchsia-500/10 p-2.5 text-left transition-all hover:border-fuchsia-400 hover:bg-fuchsia-500/20"
                     >

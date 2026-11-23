@@ -7,7 +7,7 @@ import { Simulator } from '../simulator';
 
 const CPU_JSON_PATH = path.resolve(
   process.cwd(),
-  'public/projects/26-16bit-risc-computer-30k.json',
+  'public/projects/26-ws16-risc-computer-41k.json',
 );
 
 function readLcdPixels(sim: Simulator): number[][] {

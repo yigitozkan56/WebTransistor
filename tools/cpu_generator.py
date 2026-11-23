@@ -1309,7 +1309,7 @@ def synthesize_ws16_computer() -> Tuple[dict, dict]:
 
 
 def main() -> int:
-    out_path = os.path.join("public", "projects", "26-16bit-risc-computer-30k.json")
+    out_path = os.path.join("public", "projects", "26-ws16-risc-computer-41k.json")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
     print("[WS-16] Synthesizing 16-Bit RISC Computer from raw NMOS/PMOS transistors...")

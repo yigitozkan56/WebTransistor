@@ -68,7 +68,7 @@ describe('PureSilicon 10 Example JSON Projects — Schema, Grid & Manifest Integ
       '23-4x4-sram-memory-bank',
       '24-4bit-array-multiplier',
       '25-8x8-gpu-pixel-rasterizer',
-      '26-16bit-risc-computer-30k',
+      '26-ws16-risc-computer-41k',
     ];
 
     EXAMPLE_PROJECTS.forEach((meta, idx) => {
